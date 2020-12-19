@@ -1,10 +1,7 @@
 name: Frontend Test
 
 on:
-  pull_request:
-    paths:
-      - "frontend/*"
-      - "frontend/**/*"
+  [pull_request]
 
 jobs:
   build:
