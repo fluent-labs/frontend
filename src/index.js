@@ -10,7 +10,7 @@ import { ApolloClient } from "apollo-client";
 import { ApolloProvider } from "@apollo/react-hooks";
 import {
   InMemoryCache,
-  IntrospectionFragmentMatcher
+  IntrospectionFragmentMatcher,
 } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 
@@ -21,16 +21,16 @@ if (window.location.hostname === "localhost") {
 }
 
 const fragmentMatcher = new IntrospectionFragmentMatcher({
-  introspectionQueryResultData
+  introspectionQueryResultData,
 });
 const cache = new InMemoryCache({ fragmentMatcher });
 const link = new HttpLink({
-  uri: apiUrl
+  uri: apiUrl,
 });
 
 const client = new ApolloClient({
   cache,
-  link
+  link,
 });
 
 ReactDOM.render(

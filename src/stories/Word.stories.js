@@ -4,7 +4,7 @@ import "semantic-ui-css/semantic.min.css";
 
 export default {
   title: "Word",
-  component: Word
+  component: Word,
 };
 
 export const English = () => (

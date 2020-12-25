@@ -7,14 +7,14 @@ class Reader extends Component {
   state = {
     language: "",
     text: "",
-    submitted: false
+    submitted: false,
   };
 
   handleSubmit = ({ text, language }) => {
     this.setState({
       language: language,
       submitted: true,
-      text: text
+      text: text,
     });
   };
 

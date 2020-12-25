@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 
 import { Button, Card, List } from "semantic-ui-react";
 
-const Word = props => {
+const Word = (props) => {
   const {
     language,
     token,
     tag,
     lemma,
-    definitions: { definitions }
+    definitions: { definitions },
   } = props;
 
   let header = token;
@@ -17,7 +17,7 @@ const Word = props => {
   if (language === "CHINESE") {
     const {
       definitions: { pinyin },
-      hsk
+      hsk,
     } = props;
 
     if (pinyin && pinyin != null) {
@@ -47,7 +47,7 @@ const Word = props => {
           <List bulleted>
             {definitions &&
               definitions != null &&
-              definitions[0].subdefinitions.map(definition => {
+              definitions[0].subdefinitions.map((definition) => {
                 return <List.Header key={definition}>{definition}</List.Header>;
               })}
           </List>
@@ -69,7 +69,7 @@ Word.propTypes = {
   lemma: PropTypes.string,
   definitions: PropTypes.array,
   hsk: PropTypes.number,
-  pinyin: PropTypes.array
+  pinyin: PropTypes.array,
 };
 
 export default Word;

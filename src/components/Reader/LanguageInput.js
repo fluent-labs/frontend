@@ -18,7 +18,7 @@ class LanguageInput extends Component {
     const languages = [
       { key: "en", value: "ENGLISH", text: "English" },
       { key: "es", value: "SPANISH", text: "Spanish" },
-      { key: "zh", value: "CHINESE", text: "Chinese" }
+      { key: "zh", value: "CHINESE", text: "Chinese" },
     ];
 
     return (
@@ -45,7 +45,7 @@ class LanguageInput extends Component {
 }
 
 LanguageInput.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default LanguageInput;
