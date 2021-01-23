@@ -14,7 +14,13 @@ type WordInfo = {
   pinyin?: string;
 };
 
-const Vocabulary = (language: string, text: string, submitted: boolean) => {
+type VocabularyProps = {
+  language: string;
+  text: string;
+  submitted: boolean;
+};
+
+const Vocabulary = ({ language, text, submitted }: VocabularyProps) => {
   const data: Array<WordInfo> = [];
   const loading = false;
   const error = true;
