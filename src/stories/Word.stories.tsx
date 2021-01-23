@@ -10,21 +10,37 @@ export default {
 export const English = () => (
   <Word
     language="ENGLISH"
-    token="Hello"
-    tag="Noun"
-    lemma="Hello"
-    definitions={["A greeting", "Something to greet others with"]}
+    word={{
+      token: "Hello",
+      tag: "Noun",
+      lemma: "Hello",
+      definitions: [
+        {
+          id: "mockId",
+          subdefinitions: ["A greeting", "Something to greet others with"],
+          tag: "Noun",
+        },
+      ],
+    }}
   />
 );
 
 export const Chinese = () => (
   <Word
     language="CHINESE"
-    token="你好"
-    tag="Noun"
-    lemma="你好"
-    definitions={["欢迎观临", "您好"]}
-    hsk={5}
-    pinyin={"ni3 hao3"}
+    word={{
+      token: "你好",
+      tag: "Noun",
+      lemma: "你好",
+      definitions: [
+        {
+          id: "mockId",
+          subdefinitions: ["欢迎观临", "您好"],
+          tag: "Noun",
+          hsk: "5",
+          pronunciation: "ni3 hao3",
+        },
+      ],
+    }}
   />
 );

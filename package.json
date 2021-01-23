@@ -10,6 +10,7 @@
     "@types/node": "^13.1.6",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "axios": "^0.21.1",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -21,7 +22,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint '**/*.tsx'",
+    "lint": "eslint '**/*.ts' '**/*.tsx'",
+    "lintfix": "eslint '**/*.ts' '**/*.tsx' --fix",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",

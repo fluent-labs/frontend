@@ -1,54 +1,45 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import { Card, Dimmer, Loader } from "semantic-ui-react";
 import Word from "./Word";
+import { WordDTO } from "../../client/api/ApiClient";
 
-type WordInfo = {
-  token: string;
+interface VocabularyProps {
   language: string;
-  tag: string;
-  lemma: string;
-  definitions: Array<string>;
-  hsk?: number;
-  pinyin?: string;
-};
+  submissionState: SubmissionState;
+  words: Array<WordDTO>;
+}
 
-type VocabularyProps = {
-  language: string;
-  text: string;
-  submitted: boolean;
-};
+export enum SubmissionState {
+  PENDING,
+  LOADING,
+  SUCCESS,
+  FAILURE,
+}
 
-const Vocabulary = ({ language, text, submitted }: VocabularyProps) => {
-  const data: Array<WordInfo> = [];
-  const loading = false;
-  const error = true;
+export const Vocabulary = ({
+  language,
+  submissionState,
+  words,
+}: VocabularyProps) => {
+  if (submissionState === SubmissionState.PENDING)
+    return <p>Submit text to see some vocabulary.</p>;
 
-  if (!submitted) return <p>Submit text to see some vocabulary.</p>;
-
-  if (loading) {
+  if (submissionState === SubmissionState.LOADING) {
     return (
       <Dimmer active>
         <Loader />
       </Dimmer>
     );
   }
-  if (error) return <p>Error loading vocabulary.</p>;
+  if (submissionState === SubmissionState.FAILURE)
+    return <p>Error loading vocabulary.</p>;
 
   return (
     <Card.Group>
-      {data.map((word) => (
-        <Word key={word.token} {...word} />
+      {words.map((word: WordDTO) => (
+        <Word key={word.token} language={language} word={word} />
       ))}
     </Card.Group>
   );
 };
-
-Vocabulary.propTypes = {
-  language: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  submitted: PropTypes.bool.isRequired,
-};
-
-export default Vocabulary;

@@ -1,26 +1,43 @@
 import React, { Component } from "react";
+import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 
 import LanguageInput from "./LanguageInput";
-import Vocabulary from "./Vocabulary";
+import { SubmissionState, Vocabulary } from "./Vocabulary";
 
 interface SubmitText {
   text: string;
   language: string;
 }
 
-class Reader extends Component {
+interface ReaderProps {}
+
+interface ReaderState {
+  language: string;
+  submissionState: SubmissionState;
+  words: Array<WordDTO>;
+}
+
+class Reader extends Component<ReaderProps, ReaderState> {
   state = {
     language: "",
-    text: "",
-    submitted: false,
+    submissionState: SubmissionState.PENDING,
+    words: [],
   };
+  client = new ApiClient();
 
   handleSubmit = ({ text, language }: SubmitText) => {
-    this.setState({
-      language: language,
-      submitted: true,
-      text: text,
-    });
+    this.setState({ submissionState: SubmissionState.LOADING });
+    this.client
+      .getWordsInDocument(language, text)
+      .then((result) => {
+        this.setState({
+          submissionState: SubmissionState.SUCCESS,
+          words: result,
+        });
+      })
+      .catch((e) => {
+        this.setState({ submissionState: SubmissionState.FAILURE });
+      });
   };
 
   render = () => {
@@ -29,8 +46,8 @@ class Reader extends Component {
         <LanguageInput onSubmit={this.handleSubmit} />
         <Vocabulary
           language={this.state.language}
-          text={this.state.text}
-          submitted={this.state.submitted}
+          submissionState={this.state.submissionState}
+          words={this.state.words}
         />
       </div>
     );
