@@ -6,8 +6,7 @@ import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 
 interface VocabularyProps {
   language: string;
-  text: string;
-};
+}
 
 interface VocabularyState {
   submissionState: SubmissionState;
@@ -18,25 +17,31 @@ enum SubmissionState {
   PENDING,
   LOADING,
   SUCCESS,
-  FAILURE
+  FAILURE,
 }
 
 class Vocabulary extends Component<VocabularyProps, VocabularyState> {
   state = { submissionState: SubmissionState.PENDING, data: [] };
   client = new ApiClient();
 
-  submit = (language: string, text: string) => {
+  submit = (text: string) => {
     this.setState({ submissionState: SubmissionState.LOADING });
-    this.client.getWordsInDocument(language, text).then(result => {
-      this.setState({ submissionState: SubmissionState.SUCCESS, data: result});
-    }).catch(e => {
-      this.setState({ submissionState: SubmissionState.FAILURE });
-    });
-  }
+    this.client
+      .getWordsInDocument(this.props.language, text)
+      .then((result) => {
+        this.setState({
+          submissionState: SubmissionState.SUCCESS,
+          data: result,
+        });
+      })
+      .catch((e) => {
+        this.setState({ submissionState: SubmissionState.FAILURE });
+      });
+  };
 
   render = () => {
-
-    if (this.state.submissionState === SubmissionState.PENDING) return <p>Submit text to see some vocabulary.</p>;
+    if (this.state.submissionState === SubmissionState.PENDING)
+      return <p>Submit text to see some vocabulary.</p>;
 
     if (this.state.submissionState === SubmissionState.LOADING) {
       return (
@@ -45,7 +50,8 @@ class Vocabulary extends Component<VocabularyProps, VocabularyState> {
         </Dimmer>
       );
     }
-    if (this.state.submissionState === SubmissionState.FAILURE) return <p>Error loading vocabulary.</p>;
+    if (this.state.submissionState === SubmissionState.FAILURE)
+      return <p>Error loading vocabulary.</p>;
 
     return (
       <Card.Group>
@@ -55,6 +61,6 @@ class Vocabulary extends Component<VocabularyProps, VocabularyState> {
       </Card.Group>
     );
   };
-};
+}
 
 export default Vocabulary;

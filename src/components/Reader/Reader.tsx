@@ -12,13 +12,11 @@ class Reader extends Component {
   state = {
     language: "",
     text: "",
-    submitted: false,
   };
 
   handleSubmit = ({ text, language }: SubmitText) => {
     this.setState({
       language: language,
-      submitted: true,
       text: text,
     });
   };
@@ -27,11 +25,7 @@ class Reader extends Component {
     return (
       <div>
         <LanguageInput onSubmit={this.handleSubmit} />
-        <Vocabulary
-          language={this.state.language}
-          text={this.state.text}
-          submitted={this.state.submitted}
-        />
+        <Vocabulary language={this.state.language} />
       </div>
     );
   };

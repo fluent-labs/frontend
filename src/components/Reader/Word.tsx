@@ -13,30 +13,36 @@ type WordDisplayInfo = {
   header: string;
   meta: string;
   definitions: Array<string>;
-}
+};
 
 const getWordInfo = (word: WordDTO): WordDisplayInfo => {
   return {
     header: `${word.token} (${word.lemma})`,
     meta: word.tag,
-    definitions: word.definitions.flatMap(definition => definition.subdefinitions)
-  }
-}
+    definitions: word.definitions.flatMap(
+      (definition) => definition.subdefinitions
+    ),
+  };
+};
 
 const getChineseWordInfo = (word: WordDTO): WordDisplayInfo => {
-  const pinyin = word.definitions.length > 0 ? ` (${word.definitions[0].pronunciation})` : "";
+  const pinyin =
+    word.definitions.length > 0
+      ? ` (${word.definitions[0].pronunciation})`
+      : "";
 
   return {
     header: `${word.token}${pinyin}`,
     meta: word.tag,
-    definitions: word.definitions.flatMap(definition => definition.subdefinitions)
-  }
-}
+    definitions: word.definitions.flatMap(
+      (definition) => definition.subdefinitions
+    ),
+  };
+};
 
 const Word = ({ language, word }: WordProps) => {
-  const wordInfo: WordDisplayInfo = language === "CHINESE" ?
-    getChineseWordInfo(word) :
-    getWordInfo(word);
+  const wordInfo: WordDisplayInfo =
+    language === "CHINESE" ? getChineseWordInfo(word) : getWordInfo(word);
 
   return (
     <Card>
@@ -46,8 +52,8 @@ const Word = ({ language, word }: WordProps) => {
         <Card.Description>
           <List bulleted>
             {wordInfo.definitions.map((definition) => {
-                return <List.Header key={definition}>{definition}</List.Header>;
-              })}
+              return <List.Header key={definition}>{definition}</List.Header>;
+            })}
           </List>
         </Card.Description>
       </Card.Content>
@@ -62,7 +68,7 @@ const Word = ({ language, word }: WordProps) => {
 
 Word.propTypes = {
   language: PropTypes.string.isRequired,
-  word: PropTypes.object.isRequired
+  word: PropTypes.object.isRequired,
 };
 
 export default Word;
