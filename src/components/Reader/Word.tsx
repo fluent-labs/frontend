@@ -3,25 +3,13 @@ import PropTypes from "prop-types";
 
 import { Button, Card, List } from "semantic-ui-react";
 
-const Word = (props) => {
-  const {
-    language,
-    token,
-    tag,
-    lemma,
-    definitions: { definitions },
-  } = props;
+const Word = (language: string, token: string, tag: string, lemma: string, definitions: Array<string>, hsk?: number, pinyin?: string) => {
 
   let header = token;
   let meta;
   if (language === "CHINESE") {
-    const {
-      definitions: { pinyin },
-      hsk,
-    } = props;
-
     if (pinyin && pinyin != null) {
-      header += ` (${pinyin.join(", ")})`;
+      header = header.concat(pinyin);
     }
 
     meta = "";
@@ -47,7 +35,7 @@ const Word = (props) => {
           <List bulleted>
             {definitions &&
               definitions != null &&
-              definitions[0].subdefinitions.map((definition) => {
+              definitions.map((definition) => {
                 return <List.Header key={definition}>{definition}</List.Header>;
               })}
           </List>
