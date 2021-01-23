@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Foreign Language Reader",
+  "name": "Foreign Language Reader - Learn to read in a new language",
   "icons": [
     {
       "src": "favicon.ico",
