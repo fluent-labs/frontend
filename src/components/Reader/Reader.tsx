@@ -3,6 +3,11 @@ import React, { Component } from "react";
 import LanguageInput from "./LanguageInput";
 import Vocabulary from "./Vocabulary";
 
+interface SubmitText {
+  text: string;
+  language: string;
+}
+
 class Reader extends Component {
   state = {
     language: "",
@@ -10,7 +15,7 @@ class Reader extends Component {
     submitted: false,
   };
 
-  handleSubmit = ({ text, language }) => {
+  handleSubmit = ({ text, language }: SubmitText) => {
     this.setState({
       language: language,
       submitted: true,
