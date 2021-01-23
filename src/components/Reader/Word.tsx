@@ -2,57 +2,50 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Button, Card, List } from "semantic-ui-react";
+import { WordDTO } from "../../client/api/ApiClient";
 
 type WordProps = {
   language: string;
-  token: string;
-  tag: string;
-  lemma: string;
-  definitions: Array<string>;
-  hsk?: number;
-  pinyin?: string;
+  word: WordDTO;
 };
 
-const Word = ({
-  language,
-  token,
-  tag,
-  lemma,
-  definitions,
-  hsk,
-  pinyin,
-}: WordProps) => {
-  let header = token;
-  let meta;
-  if (language === "CHINESE") {
-    if (pinyin && pinyin != null) {
-      header = header.concat(pinyin);
-    }
+type WordDisplayInfo = {
+  header: string;
+  meta: string;
+  definitions: Array<string>;
+}
 
-    meta = "";
-    if (tag && tag != null) {
-      meta += tag;
-    }
-    if (hsk && hsk != null) {
-      meta += ` - HSK: ${hsk}`;
-    }
-  } else {
-    if (lemma && lemma != null) {
-      header += ` (${lemma})`;
-    }
-    meta = tag;
+const getWordInfo = (word: WordDTO): WordDisplayInfo => {
+  return {
+    header: `${word.token} (${word.lemma})`,
+    meta: word.tag,
+    definitions: word.definitions.flatMap(definition => definition.subdefinitions)
   }
+}
+
+const getChineseWordInfo = (word: WordDTO): WordDisplayInfo => {
+  const pinyin = word.definitions.length > 0 ? ` (${word.definitions[0].pronunciation})` : "";
+
+  return {
+    header: `${word.token}${pinyin}`,
+    meta: word.tag,
+    definitions: word.definitions.flatMap(definition => definition.subdefinitions)
+  }
+}
+
+const Word = ({ language, word }: WordProps) => {
+  const wordInfo: WordDisplayInfo = language === "CHINESE" ?
+    getChineseWordInfo(word) :
+    getWordInfo(word);
 
   return (
     <Card>
       <Card.Content>
-        <Card.Header>{header}</Card.Header>
-        <Card.Meta>{meta}</Card.Meta>
+        <Card.Header>{wordInfo.header}</Card.Header>
+        <Card.Meta>{wordInfo.meta}</Card.Meta>
         <Card.Description>
           <List bulleted>
-            {definitions &&
-              definitions != null &&
-              definitions.map((definition) => {
+            {wordInfo.definitions.map((definition) => {
                 return <List.Header key={definition}>{definition}</List.Header>;
               })}
           </List>
@@ -69,12 +62,7 @@ const Word = ({
 
 Word.propTypes = {
   language: PropTypes.string.isRequired,
-  token: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-  lemma: PropTypes.string.isRequired,
-  definitions: PropTypes.array.isRequired,
-  hsk: PropTypes.number,
-  pinyin: PropTypes.array,
+  word: PropTypes.object.isRequired
 };
 
 export default Word;
