@@ -10,8 +10,8 @@ export default {
 export const English = () => (
   <Word
     language="ENGLISH"
-    text="Hello"
-    partOfSpeech="Noun"
+    token="Hello"
+    tag="Noun"
     lemma="Hello"
     definitions={["A greeting", "Something to greet others with"]}
   />
@@ -20,11 +20,11 @@ export const English = () => (
 export const Chinese = () => (
   <Word
     language="CHINESE"
-    text="你好"
-    partOfSpeech="Noun"
+    token="你好"
+    tag="Noun"
     lemma="你好"
     definitions={["欢迎观临", "您好"]}
     hsk={5}
-    pinyin={["ni3 hao3"]}
+    pinyin={"ni3 hao3"}
   />
 );
