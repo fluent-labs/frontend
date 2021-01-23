@@ -22,3 +22,5 @@ yarn-error.log*
 
 # Storybook build files
 storybook-static
+.eslintcache
+src/react-app-env.d.ts
