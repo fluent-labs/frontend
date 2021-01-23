@@ -11,7 +11,7 @@ export type Definition = {
   hsk?: string;
 };
 
-export type Word = {
+export type WordDTO = {
   token: string;
   tag: string;
   lemma: string;
@@ -37,8 +37,8 @@ export class ApiClient {
   getWordsInDocument = async (
     language: string,
     document: string
-  ): Promise<Array<Word>> => {
-    const response = await axios.post<Array<Word>>(
+  ): Promise<Array<WordDTO>> => {
+    const response = await axios.post<Array<WordDTO>>(
       `${this.hostname}/v1/language/document/${language}/`,
       { text: document }
     );
