@@ -1,66 +1,45 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { Card, Dimmer, Loader } from "semantic-ui-react";
 import Word from "./Word";
-import { ApiClient, WordDTO } from "../../client/api/ApiClient";
+import { WordDTO } from "../../client/api/ApiClient";
 
 interface VocabularyProps {
   language: string;
-}
-
-interface VocabularyState {
   submissionState: SubmissionState;
-  data: Array<WordDTO>;
+  words: Array<WordDTO>;
 }
 
-enum SubmissionState {
+export enum SubmissionState {
   PENDING,
   LOADING,
   SUCCESS,
   FAILURE,
 }
 
-class Vocabulary extends Component<VocabularyProps, VocabularyState> {
-  state = { submissionState: SubmissionState.PENDING, data: [] };
-  client = new ApiClient();
+export const Vocabulary = ({
+  language,
+  submissionState,
+  words,
+}: VocabularyProps) => {
+  if (submissionState === SubmissionState.PENDING)
+    return <p>Submit text to see some vocabulary.</p>;
 
-  submit = (text: string) => {
-    this.setState({ submissionState: SubmissionState.LOADING });
-    this.client
-      .getWordsInDocument(this.props.language, text)
-      .then((result) => {
-        this.setState({
-          submissionState: SubmissionState.SUCCESS,
-          data: result,
-        });
-      })
-      .catch((e) => {
-        this.setState({ submissionState: SubmissionState.FAILURE });
-      });
-  };
-
-  render = () => {
-    if (this.state.submissionState === SubmissionState.PENDING)
-      return <p>Submit text to see some vocabulary.</p>;
-
-    if (this.state.submissionState === SubmissionState.LOADING) {
-      return (
-        <Dimmer active>
-          <Loader />
-        </Dimmer>
-      );
-    }
-    if (this.state.submissionState === SubmissionState.FAILURE)
-      return <p>Error loading vocabulary.</p>;
-
+  if (submissionState === SubmissionState.LOADING) {
     return (
-      <Card.Group>
-        {this.state.data.map((word: WordDTO) => (
-          <Word key={word.token} language={this.props.language} word={word} />
-        ))}
-      </Card.Group>
+      <Dimmer active>
+        <Loader />
+      </Dimmer>
     );
-  };
-}
+  }
+  if (submissionState === SubmissionState.FAILURE)
+    return <p>Error loading vocabulary.</p>;
 
-export default Vocabulary;
+  return (
+    <Card.Group>
+      {words.map((word: WordDTO) => (
+        <Word key={word.token} language={language} word={word} />
+      ))}
+    </Card.Group>
+  );
+};
