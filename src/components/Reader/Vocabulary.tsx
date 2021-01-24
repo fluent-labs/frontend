@@ -3,18 +3,12 @@ import React from "react";
 import { Card, Dimmer, Loader } from "semantic-ui-react";
 import Word from "./Word";
 import { WordDTO } from "../../client/api/ApiClient";
+import { SubmissionState } from "./Reader";
 
 interface VocabularyProps {
   language: string;
   submissionState: SubmissionState;
   words: Array<WordDTO>;
-}
-
-export enum SubmissionState {
-  PENDING,
-  LOADING,
-  SUCCESS,
-  FAILURE,
 }
 
 export const Vocabulary = ({

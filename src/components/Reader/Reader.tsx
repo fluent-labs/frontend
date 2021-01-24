@@ -2,11 +2,18 @@ import React, { Component } from "react";
 import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 
 import LanguageInput from "./LanguageInput";
-import { SubmissionState, Vocabulary } from "./Vocabulary";
+import { Vocabulary } from "./Vocabulary";
 
 interface SubmitText {
   text: string;
   language: string;
+}
+
+export enum SubmissionState {
+  PENDING,
+  LOADING,
+  SUCCESS,
+  FAILURE,
 }
 
 interface ReaderProps {}
