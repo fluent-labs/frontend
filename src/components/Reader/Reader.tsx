@@ -54,7 +54,6 @@ class Reader extends Component<ReaderProps, ReaderState> {
     const hasWords = this.state.submissionState !== SubmissionState.PENDING;
     return (
       <div>
-        {`hasInput: ${hasInput}, hasWords: ${hasWords}`}
         <Transition visible={hasInput} animation="scale" duration={500}>
           <LanguageInput onSubmit={this.handleSubmit} />
         </Transition>

@@ -1,6 +1,13 @@
 import React from "react";
 
-import { Card, Container, Dimmer, Header, Loader } from "semantic-ui-react";
+import {
+  Card,
+  Container,
+  Dimmer,
+  Divider,
+  Header,
+  Loader,
+} from "semantic-ui-react";
 
 import Definition from "./Definition";
 import { Word } from "./Word";
@@ -39,6 +46,7 @@ export const Vocabulary = ({
           return <Word key={word.token} word={word} selected />;
         })}
       </Container>
+      <Divider />
       <Card.Group>
         {words.map((word: WordDTO) => (
           <Definition key={word.token} language={language} word={word} />
