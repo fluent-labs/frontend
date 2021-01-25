@@ -1,7 +1,9 @@
 import React from "react";
 
-import { Card, Dimmer, Loader } from "semantic-ui-react";
+import { Card, Container, Dimmer, Header, Loader } from "semantic-ui-react";
+
 import Definition from "./Definition";
+import { Word } from "./Word";
 import { WordDTO } from "../../client/api/ApiClient";
 import { SubmissionState } from "./Reader";
 
@@ -30,10 +32,18 @@ export const Vocabulary = ({
     return <p>Error loading vocabulary.</p>;
 
   return (
-    <Card.Group>
-      {words.map((word: WordDTO) => (
-        <Definition key={word.token} language={language} word={word} />
-      ))}
-    </Card.Group>
+    <div>
+      <Container text>
+        <Header as="h2">Words</Header>
+        {words.map((word) => {
+          return <Word key={word.token} word={word} selected />;
+        })}
+      </Container>
+      <Card.Group>
+        {words.map((word: WordDTO) => (
+          <Definition key={word.token} language={language} word={word} />
+        ))}
+      </Card.Group>
+    </div>
   );
 };

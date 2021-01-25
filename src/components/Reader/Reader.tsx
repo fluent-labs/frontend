@@ -4,8 +4,7 @@ import { Divider, Transition } from "semantic-ui-react";
 
 import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 import LanguageInput from "./LanguageInput";
-import { Words } from "./Words";
-// import { Vocabulary } from "./Vocabulary";
+import { Vocabulary } from "./Vocabulary";
 
 interface SubmitText {
   text: string;
@@ -61,12 +60,11 @@ class Reader extends Component<ReaderProps, ReaderState> {
         </Transition>
         <Divider />
         <Transition visible={hasWords} animation="scale" duration={500}>
-          <Words words={this.state.words} />
-          {/* <Vocabulary
+          <Vocabulary
             language={this.state.language}
             submissionState={this.state.submissionState}
             words={this.state.words}
-          /> */}
+          />
         </Transition>
       </div>
     );
