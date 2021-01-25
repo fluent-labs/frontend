@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 
+import { Divider, Transition } from "semantic-ui-react";
+
+import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 import LanguageInput from "./LanguageInput";
-import { Vocabulary } from "./Vocabulary";
+import { Words } from "./Words";
+// import { Vocabulary } from "./Vocabulary";
 
 interface SubmitText {
   text: string;
@@ -48,14 +51,23 @@ class Reader extends Component<ReaderProps, ReaderState> {
   };
 
   render = () => {
+    const hasInput = this.state.submissionState === SubmissionState.PENDING;
+    const hasWords = this.state.submissionState !== SubmissionState.PENDING;
     return (
       <div>
-        <LanguageInput onSubmit={this.handleSubmit} />
-        <Vocabulary
-          language={this.state.language}
-          submissionState={this.state.submissionState}
-          words={this.state.words}
-        />
+        {`hasInput: ${hasInput}, hasWords: ${hasWords}`}
+        <Transition visible={hasInput} animation="scale" duration={500}>
+          <LanguageInput onSubmit={this.handleSubmit} />
+        </Transition>
+        <Divider />
+        <Transition visible={hasWords} animation="scale" duration={500}>
+          <Words words={this.state.words} />
+          {/* <Vocabulary
+            language={this.state.language}
+            submissionState={this.state.submissionState}
+            words={this.state.words}
+          /> */}
+        </Transition>
       </div>
     );
   };
