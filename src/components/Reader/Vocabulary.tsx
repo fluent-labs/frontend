@@ -1,16 +1,16 @@
 import React from "react";
 
 import {
-  Card,
   Container,
   Dimmer,
   Divider,
+  Item,
   Header,
   Loader,
 } from "semantic-ui-react";
 
-import Definition from "./Definition";
 import { Word } from "./Word";
+import { WordSelector } from "./WordSelector";
 import { WordDTO } from "../../client/api/ApiClient";
 import { SubmissionState } from "./Reader";
 
@@ -43,15 +43,15 @@ export const Vocabulary = ({
       <Container text>
         <Header as="h2">Words</Header>
         {words.map((word) => {
-          return <Word key={word.token} word={word} selected />;
+          return <WordSelector key={word.token} word={word} selected />;
         })}
       </Container>
       <Divider />
-      <Card.Group>
+      <Item.Group divided>
         {words.map((word: WordDTO) => (
-          <Definition key={word.token} language={language} word={word} />
+          <Word key={word.token} language={language} word={word} />
         ))}
-      </Card.Group>
+      </Item.Group>
     </div>
   );
 };

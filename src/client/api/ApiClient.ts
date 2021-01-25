@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export type Definition = {
+export type DefinitionDTO = {
   id: string;
   subdefinitions: Array<string>;
   tag: string;
@@ -15,7 +15,7 @@ export type WordDTO = {
   token: string;
   tag: string;
   lemma: string;
-  definitions: Array<Definition>;
+  definitions: Array<DefinitionDTO>;
 };
 
 export class ApiClient {
@@ -27,8 +27,8 @@ export class ApiClient {
   getDefinition = async (
     language: string,
     token: string
-  ): Promise<Array<Definition>> => {
-    const response = await axios.get<Array<Definition>>(
+  ): Promise<Array<DefinitionDTO>> => {
+    const response = await axios.get<Array<DefinitionDTO>>(
       `${this.hostname}/v1/language/definition/${language}/${token}/`
     );
     return response.data;
