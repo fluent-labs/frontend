@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Card, Dimmer, Loader } from "semantic-ui-react";
-import Word from "./Word";
+import Definition from "./Definition";
 import { WordDTO } from "../../client/api/ApiClient";
 import { SubmissionState } from "./Reader";
 
@@ -32,7 +32,7 @@ export const Vocabulary = ({
   return (
     <Card.Group>
       {words.map((word: WordDTO) => (
-        <Word key={word.token} language={language} word={word} />
+        <Definition key={word.token} language={language} word={word} />
       ))}
     </Card.Group>
   );

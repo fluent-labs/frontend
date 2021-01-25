@@ -1,14 +1,14 @@
 import React from "react";
-import Word from "../components/Reader/Word";
+import Definition from "../components/Reader/Definition";
 import "semantic-ui-css/semantic.min.css";
 
 export default {
   title: "Word",
-  component: Word,
+  component: Definition,
 };
 
 export const English = () => (
-  <Word
+  <Definition
     language="ENGLISH"
     word={{
       token: "Hello",
@@ -26,7 +26,7 @@ export const English = () => (
 );
 
 export const Chinese = () => (
-  <Word
+  <Definition
     language="CHINESE"
     word={{
       token: "你好",
