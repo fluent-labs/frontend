@@ -35,7 +35,10 @@ class Reader extends Component<ReaderProps, ReaderState> {
   client = new ApiClient();
 
   handleSubmit = ({ text, language }: SubmitText) => {
-    this.setState({ submissionState: SubmissionState.LOADING });
+    this.setState({
+      language: language,
+      submissionState: SubmissionState.LOADING,
+    });
     this.client
       .getWordsInDocument(language, text)
       .then((result) => {
