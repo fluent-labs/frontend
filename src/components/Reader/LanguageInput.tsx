@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Button, Form, Select, TextArea } from "semantic-ui-react";
+import { Button, Dropdown, Form, TextArea } from "semantic-ui-react";
 
 type LanguageInputProps = {
   onSubmit: Function;
 };
 
 class LanguageInput extends Component<LanguageInputProps> {
-  state = { text: "", language: "" };
+  state = { text: "", language: "ENGLISH" };
 
   handleSubmit = () => {
     const { text, language } = this.state;
@@ -31,12 +31,13 @@ class LanguageInput extends Component<LanguageInputProps> {
             onChange={(e, { name, value }) => this.setState({ [name]: value })}
             value={text}
           />
-          <Select
+          <Dropdown
             placeholder="Which language is it in?"
             options={languages}
             name="language"
             onChange={(e, { name, value }) => this.setState({ [name]: value })}
             value={language}
+            selection
           />
           <Button type="submit">Submit</Button>
         </Form>

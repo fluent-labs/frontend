@@ -1,20 +1,23 @@
 import React from "react";
 
-import { Card, Dimmer, Loader } from "semantic-ui-react";
-import Word from "./Word";
+import {
+  Container,
+  Dimmer,
+  Divider,
+  Item,
+  Header,
+  Loader,
+} from "semantic-ui-react";
+
+import { Word } from "./Word";
+import { WordSelector } from "./WordSelector";
 import { WordDTO } from "../../client/api/ApiClient";
+import { SubmissionState } from "./Reader";
 
 interface VocabularyProps {
   language: string;
   submissionState: SubmissionState;
   words: Array<WordDTO>;
-}
-
-export enum SubmissionState {
-  PENDING,
-  LOADING,
-  SUCCESS,
-  FAILURE,
 }
 
 export const Vocabulary = ({
@@ -36,10 +39,19 @@ export const Vocabulary = ({
     return <p>Error loading vocabulary.</p>;
 
   return (
-    <Card.Group>
-      {words.map((word: WordDTO) => (
-        <Word key={word.token} language={language} word={word} />
-      ))}
-    </Card.Group>
+    <div>
+      <Container text>
+        <Header as="h2">Words</Header>
+        {words.map((word) => {
+          return <WordSelector key={word.token} word={word} selected />;
+        })}
+      </Container>
+      <Divider />
+      <Item.Group divided>
+        {words.map((word: WordDTO) => (
+          <Word key={word.token} language={language} word={word} />
+        ))}
+      </Item.Group>
+    </div>
   );
 };

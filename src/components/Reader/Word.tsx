@@ -1,27 +1,35 @@
 import React from "react";
-import PropTypes from "prop-types";
 
-import { Button, Card, List } from "semantic-ui-react";
-import { WordDTO } from "../../client/api/ApiClient";
+import { Button, Card, Item, Placeholder } from "semantic-ui-react";
+import { Definition } from "./Definition";
+import { ApiClient, DefinitionDTO, WordDTO } from "../../client/api/ApiClient";
+import { Component } from "react";
 
 type WordProps = {
   language: string;
   word: WordDTO;
 };
 
+interface WordState {
+  definitions: Array<DefinitionDTO>;
+  submissionState: SubmissionState;
+}
+
 type WordDisplayInfo = {
   header: string;
   meta: string;
-  definitions: Array<string>;
 };
+
+export enum SubmissionState {
+  LOADING,
+  SUCCESS,
+  FAILURE,
+}
 
 const getWordInfo = (word: WordDTO): WordDisplayInfo => {
   return {
     header: `${word.token} (${word.lemma})`,
     meta: word.tag,
-    definitions: word.definitions.flatMap(
-      (definition) => definition.subdefinitions
-    ),
   };
 };
 
@@ -34,41 +42,90 @@ const getChineseWordInfo = (word: WordDTO): WordDisplayInfo => {
   return {
     header: `${word.token}${pinyin}`,
     meta: word.tag,
-    definitions: word.definitions.flatMap(
-      (definition) => definition.subdefinitions
-    ),
   };
 };
 
-const Word = ({ language, word }: WordProps) => {
-  const wordInfo: WordDisplayInfo =
-    language === "CHINESE" ? getChineseWordInfo(word) : getWordInfo(word);
+export class Word extends Component<WordProps, WordState> {
+  state = {
+    definitions: [],
+    submissionState: SubmissionState.LOADING,
+  };
+  client = new ApiClient();
 
-  return (
-    <Card>
-      <Card.Content>
-        <Card.Header>{wordInfo.header}</Card.Header>
-        <Card.Meta>{wordInfo.meta}</Card.Meta>
-        <Card.Description>
-          <List bulleted>
-            {wordInfo.definitions.map((definition) => {
-              return <List.Header key={definition}>{definition}</List.Header>;
-            })}
-          </List>
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <Button basic color="green">
-          Add to vocabulary
-        </Button>
-      </Card.Content>
-    </Card>
-  );
-};
+  componentDidMount = () => {
+    const { language, word } = this.props;
+    this.client
+      .getDefinition(language, word.token)
+      .then((result) =>
+        this.setState({
+          definitions: result,
+          submissionState: SubmissionState.SUCCESS,
+        })
+      )
+      .catch((e) =>
+        this.setState({ submissionState: SubmissionState.FAILURE })
+      );
+  };
 
-Word.propTypes = {
-  language: PropTypes.string.isRequired,
-  word: PropTypes.object.isRequired,
-};
+  getCards = () => {
+    if (this.state.submissionState === SubmissionState.LOADING) {
+      return (
+        <Card.Group>
+          <Card>
+            <Card.Content>
+              <Card.Header as="a">
+                <Placeholder.Line length="short" />
+              </Card.Header>
+              <Card.Meta>
+                Pronunciation: <Placeholder.Line length="very short" />
+              </Card.Meta>
+              <Card.Description>
+                Definitions:
+                <Placeholder.Line />
+                <Placeholder.Line />
+                <Placeholder.Line />
+              </Card.Description>
+              <Card.Content extra>
+                <Button basic color="green">
+                  Add to vocabulary
+                </Button>
+              </Card.Content>
+            </Card.Content>
+          </Card>
+        </Card.Group>
+      );
+    } else {
+      return (
+        <Card.Group>
+          {this.state.definitions.map((definition: DefinitionDTO) => {
+            return <Definition key={definition.id} definition={definition} />;
+          })}
+        </Card.Group>
+      );
+    }
+  };
 
-export default Word;
+  render = () => {
+    const { language, word } = this.props;
+    const wordInfo: WordDisplayInfo =
+      language === "CHINESE" ? getChineseWordInfo(word) : getWordInfo(word);
+    return (
+      <Item>
+        <Item.Content>
+          <Item.Header as="a">{wordInfo.header}</Item.Header>
+          <Item.Meta>{wordInfo.meta}</Item.Meta>
+          <Item.Description>
+            <Card.Group>
+              {this.state.definitions.map((definition: DefinitionDTO) => {
+                return (
+                  <Definition key={definition.id} definition={definition} />
+                );
+              })}
+              {/* {loadingCard} */}
+            </Card.Group>
+          </Item.Description>
+        </Item.Content>
+      </Item>
+    );
+  };
+}

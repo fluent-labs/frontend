@@ -1,12 +1,21 @@
 import React, { Component } from "react";
-import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 
+import { Divider, Transition } from "semantic-ui-react";
+
+import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 import LanguageInput from "./LanguageInput";
-import { SubmissionState, Vocabulary } from "./Vocabulary";
+import { Vocabulary } from "./Vocabulary";
 
 interface SubmitText {
   text: string;
   language: string;
+}
+
+export enum SubmissionState {
+  PENDING,
+  LOADING,
+  SUCCESS,
+  FAILURE,
 }
 
 interface ReaderProps {}
@@ -26,7 +35,10 @@ class Reader extends Component<ReaderProps, ReaderState> {
   client = new ApiClient();
 
   handleSubmit = ({ text, language }: SubmitText) => {
-    this.setState({ submissionState: SubmissionState.LOADING });
+    this.setState({
+      language: language,
+      submissionState: SubmissionState.LOADING,
+    });
     this.client
       .getWordsInDocument(language, text)
       .then((result) => {
@@ -41,14 +53,21 @@ class Reader extends Component<ReaderProps, ReaderState> {
   };
 
   render = () => {
+    const hasInput = this.state.submissionState === SubmissionState.PENDING;
+    const hasWords = this.state.submissionState !== SubmissionState.PENDING;
     return (
       <div>
-        <LanguageInput onSubmit={this.handleSubmit} />
-        <Vocabulary
-          language={this.state.language}
-          submissionState={this.state.submissionState}
-          words={this.state.words}
-        />
+        <Transition visible={hasInput} animation="scale" duration={500}>
+          <LanguageInput onSubmit={this.handleSubmit} />
+        </Transition>
+        <Divider />
+        <Transition visible={hasWords} animation="scale" duration={500}>
+          <Vocabulary
+            language={this.state.language}
+            submissionState={this.state.submissionState}
+            words={this.state.words}
+          />
+        </Transition>
       </div>
     );
   };

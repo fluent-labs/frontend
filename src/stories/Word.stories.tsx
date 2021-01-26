@@ -1,5 +1,5 @@
 import React from "react";
-import Word from "../components/Reader/Word";
+import { Word } from "../components/Reader/Word";
 import "semantic-ui-css/semantic.min.css";
 
 export default {
