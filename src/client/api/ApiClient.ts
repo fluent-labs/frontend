@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Language } from "../../types/Enums";
 
 export type DefinitionDTO = {
   id: string;
@@ -25,7 +26,7 @@ export class ApiClient {
       : "https://api.foreignlanguagereader.com";
 
   getDefinition = async (
-    language: string,
+    language: Language,
     token: string
   ): Promise<Array<DefinitionDTO>> => {
     const response = await axios.get<Array<DefinitionDTO>>(
@@ -34,8 +35,19 @@ export class ApiClient {
     return response.data;
   };
 
+  getDefinitions = async (
+    language: Language,
+    tokens: Array<string>
+  ): Promise<Map<string, Array<DefinitionDTO>>> => {
+    const response = await axios.post<Map<string, Array<DefinitionDTO>>>(
+      `${this.hostname}/v1/language/definitions/${language}/ENGLISH/`,
+      { words: tokens }
+    );
+    return response.data;
+  };
+
   getWordsInDocument = async (
-    language: string,
+    language: Language,
     document: string
   ): Promise<Array<WordDTO>> => {
     const response = await axios.post<Array<WordDTO>>(
