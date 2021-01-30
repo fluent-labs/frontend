@@ -28,14 +28,14 @@ class LanguageInput extends Component<LanguageInputProps> {
           <TextArea
             placeholder="Enter some text that you would like to read"
             name="text"
-            onChange={(e, { name, value }) => this.setState({ [name]: value })}
+            onChange={(_e, { name, value }) => this.setState({ [name]: value })}
             value={text}
           />
           <Dropdown
             placeholder="Which language is it in?"
             options={languages}
             name="language"
-            onChange={(e, { name, value }) => this.setState({ [name]: value })}
+            onChange={(_e, { name, value }) => this.setState({ [name]: value })}
             value={language}
             selection
           />
