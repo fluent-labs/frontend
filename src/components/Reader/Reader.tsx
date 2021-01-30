@@ -1,76 +1,71 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import { Divider, Transition } from "semantic-ui-react";
 
-import { ApiClient, WordDTO } from "../../client/api/ApiClient";
+import { ApiClient, DefinitionDTO, WordDTO } from "../../client/api/ApiClient";
+import { Language, SubmissionState } from "../../types/Enums";
 import LanguageInput from "./LanguageInput";
 import { Vocabulary } from "./Vocabulary";
 
-interface SubmitText {
-  text: string;
-  language: string;
+const client = new ApiClient();
+
+export const Reader = () => {
+  const [language, setLanguage] = useState(Language.ENGLISH);
+  const [wordsState, setWordsState] = useState(SubmissionState.PENDING);
+  const [definitionsState, setdefinitionsState] = useState(SubmissionState.PENDING);
+
+  const [words, setWords] = useState(new Array<WordDTO>());
+  const [definitions, setDefinitions] = useState(new Map<String, Array<DefinitionDTO>>());
+
+  const handleLanguageSelection = (language: Language) => setLanguage(language);
+
+  const handleSubmit = (language: Language, text: string): Promise<void> => {
+    setLanguage(language);
+    return getWords(language, text).then((words) => getDefinitions(language, words));
+  }
+
+  const getWords = async (language: Language, text: string): Promise<Array<WordDTO>> => {
+    setWordsState(SubmissionState.SUCCESS);
+    try {
+      const result = await client.getWordsInDocument(language, text);
+      setWords(result);
+      setWordsState(SubmissionState.SUCCESS);
+      return result;
+    } catch (e) {
+      setWordsState(SubmissionState.FAILURE);
+      return words;
+    }
+  }
+
+  const getDefinitions = (language: Language, words: Array<WordDTO>): Promise<void> => {
+    const tokens = words.map(word => word.token);
+    setdefinitionsState(SubmissionState.LOADING);
+
+    return client.getDefinitions(language, tokens)
+      .then((results) => {
+      setDefinitions(results);
+      setdefinitionsState(SubmissionState.SUCCESS);
+    }).catch((e) => {
+      setdefinitionsState(SubmissionState.FAILURE);
+    })
+  }
+
+  const hasInput = wordsState === SubmissionState.PENDING;
+  const hasWords = wordsState !== SubmissionState.PENDING;
+
+  return (
+    <div>
+      <Transition visible={hasInput} animation="scale" duration={500}>
+        <LanguageInput onSubmit={handleSubmit} />
+      </Transition>
+      <Divider />
+      <Transition visible={hasWords} animation="scale" duration={500}>
+        <Vocabulary
+          language={`$language`}
+          submissionState={wordsState}
+          words={words}
+        />
+      </Transition>
+    </div>
+  );
 }
-
-export enum SubmissionState {
-  PENDING,
-  LOADING,
-  SUCCESS,
-  FAILURE,
-}
-
-interface ReaderProps {}
-
-interface ReaderState {
-  language: string;
-  submissionState: SubmissionState;
-  words: Array<WordDTO>;
-}
-
-class Reader extends Component<ReaderProps, ReaderState> {
-  state = {
-    language: "",
-    submissionState: SubmissionState.PENDING,
-    words: [],
-  };
-  client = new ApiClient();
-
-  handleSubmit = ({ text, language }: SubmitText) => {
-    this.setState({
-      language: language,
-      submissionState: SubmissionState.LOADING,
-    });
-    this.client
-      .getWordsInDocument(language, text)
-      .then((result) => {
-        this.setState({
-          submissionState: SubmissionState.SUCCESS,
-          words: result,
-        });
-      })
-      .catch((e) => {
-        this.setState({ submissionState: SubmissionState.FAILURE });
-      });
-  };
-
-  render = () => {
-    const hasInput = this.state.submissionState === SubmissionState.PENDING;
-    const hasWords = this.state.submissionState !== SubmissionState.PENDING;
-    return (
-      <div>
-        <Transition visible={hasInput} animation="scale" duration={500}>
-          <LanguageInput onSubmit={this.handleSubmit} />
-        </Transition>
-        <Divider />
-        <Transition visible={hasWords} animation="scale" duration={500}>
-          <Vocabulary
-            language={this.state.language}
-            submissionState={this.state.submissionState}
-            words={this.state.words}
-          />
-        </Transition>
-      </div>
-    );
-  };
-}
-
-export default Reader;
