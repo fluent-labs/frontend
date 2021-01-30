@@ -9,13 +9,15 @@ import { Vocabulary } from "./Vocabulary";
 
 const client = new ApiClient();
 
+const emptyArray: WordDTO[] = [];
+
 export const Reader = () => {
   const [wordsState, setWordsState] = useState(SubmissionState.PENDING);
   const [definitionsState, setdefinitionsState] = useState(
     SubmissionState.PENDING
   );
 
-  const [words, setWords] = useState(new Array<WordDTO>());
+  const [words, setWords] = useState(emptyArray);
   const [definitions, setDefinitions] = useState(
     new Map<String, Array<DefinitionDTO>>()
   );
@@ -61,7 +63,7 @@ export const Reader = () => {
   };
 
   const hasInput = wordsState === SubmissionState.PENDING;
-  const hasWords = wordsState !== SubmissionState.PENDING;
+  const hasDefinitions = definitionsState === SubmissionState.SUCCESS;
 
   return (
     <div>
@@ -69,7 +71,8 @@ export const Reader = () => {
         <LanguageInput onSubmit={handleSubmit} />
       </Transition>
       <Divider />
-      <Transition visible={hasWords} animation="scale" duration={500}>
+      <Transition visible={hasDefinitions} animation="scale" duration={500}>
+        Definitions count: {definitions.size}
         <Vocabulary submissionState={wordsState} words={words} />
       </Transition>
     </div>
