@@ -1,7 +1,7 @@
 export enum Language {
   CHINESE,
   ENGLISH,
-  SPANISH
+  SPANISH,
 }
 
 export enum SubmissionState {

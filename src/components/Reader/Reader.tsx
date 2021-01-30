@@ -10,22 +10,27 @@ import { Vocabulary } from "./Vocabulary";
 const client = new ApiClient();
 
 export const Reader = () => {
-  const [language, setLanguage] = useState(Language.ENGLISH);
   const [wordsState, setWordsState] = useState(SubmissionState.PENDING);
-  const [definitionsState, setdefinitionsState] = useState(SubmissionState.PENDING);
+  const [definitionsState, setdefinitionsState] = useState(
+    SubmissionState.PENDING
+  );
 
   const [words, setWords] = useState(new Array<WordDTO>());
-  const [definitions, setDefinitions] = useState(new Map<String, Array<DefinitionDTO>>());
-
-  const handleLanguageSelection = (language: Language) => setLanguage(language);
+  const [definitions, setDefinitions] = useState(
+    new Map<String, Array<DefinitionDTO>>()
+  );
 
   const handleSubmit = (language: Language, text: string): Promise<void> => {
-    setLanguage(language);
-    return getWords(language, text).then((words) => getDefinitions(language, words));
-  }
+    return getWords(language, text).then((words) =>
+      getDefinitions(language, words)
+    );
+  };
 
-  const getWords = async (language: Language, text: string): Promise<Array<WordDTO>> => {
-    setWordsState(SubmissionState.SUCCESS);
+  const getWords = async (
+    language: Language,
+    text: string
+  ): Promise<Array<WordDTO>> => {
+    setWordsState(SubmissionState.LOADING);
     try {
       const result = await client.getWordsInDocument(language, text);
       setWords(result);
@@ -35,20 +40,25 @@ export const Reader = () => {
       setWordsState(SubmissionState.FAILURE);
       return words;
     }
-  }
+  };
 
-  const getDefinitions = (language: Language, words: Array<WordDTO>): Promise<void> => {
-    const tokens = words.map(word => word.token);
+  const getDefinitions = (
+    language: Language,
+    words: Array<WordDTO>
+  ): Promise<void> => {
+    const tokens = words.map((word) => word.token);
     setdefinitionsState(SubmissionState.LOADING);
 
-    return client.getDefinitions(language, tokens)
+    return client
+      .getDefinitions(language, tokens)
       .then((results) => {
-      setDefinitions(results);
-      setdefinitionsState(SubmissionState.SUCCESS);
-    }).catch((e) => {
-      setdefinitionsState(SubmissionState.FAILURE);
-    })
-  }
+        setDefinitions(results);
+        setdefinitionsState(SubmissionState.SUCCESS);
+      })
+      .catch((e) => {
+        setdefinitionsState(SubmissionState.FAILURE);
+      });
+  };
 
   const hasInput = wordsState === SubmissionState.PENDING;
   const hasWords = wordsState !== SubmissionState.PENDING;
@@ -60,12 +70,8 @@ export const Reader = () => {
       </Transition>
       <Divider />
       <Transition visible={hasWords} animation="scale" duration={500}>
-        <Vocabulary
-          language={`$language`}
-          submissionState={wordsState}
-          words={words}
-        />
+        <Vocabulary submissionState={wordsState} words={words} />
       </Transition>
     </div>
   );
-}
+};

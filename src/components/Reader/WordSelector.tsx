@@ -6,6 +6,7 @@ import { WordDTO } from "../../client/api/ApiClient";
 interface WordProps {
   // onDeselected(): void;
   // onSelected(): void;
+  key: String;
   selected: boolean;
   word: WordDTO;
 }

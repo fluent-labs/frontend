@@ -1,14 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import { Button, Card, List } from "semantic-ui-react";
 import { DefinitionDTO } from "../../client/api/ApiClient";
 
-type DefinitionProps = {
-  definition: DefinitionDTO;
-};
-
-export const Definition = ({ definition }: DefinitionProps) => {
+export const Definition = (definition: DefinitionDTO) => {
   return (
     <Card>
       <Card.Content>
@@ -30,8 +25,4 @@ export const Definition = ({ definition }: DefinitionProps) => {
       </Card.Content>
     </Card>
   );
-};
-
-Definition.propTypes = {
-  definition: PropTypes.object.isRequired,
 };
