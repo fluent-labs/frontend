@@ -1,6 +1,6 @@
 export enum SubmissionState {
-  PENDING,
-  LOADING,
-  SUCCESS,
-  FAILURE,
+  PENDING = "Pending",
+  LOADING = "Loading",
+  SUCCESS = "Success",
+  FAILURE = "Failure",
 }

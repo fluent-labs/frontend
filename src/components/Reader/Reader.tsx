@@ -13,7 +13,7 @@ const emptyArray: WordDTO[] = [];
 
 export const Reader = () => {
   const [wordsState, setWordsState] = useState(SubmissionState.PENDING);
-  const [definitionsState, setdefinitionsState] = useState(
+  const [definitionsState, setDefinitionsState] = useState(
     SubmissionState.PENDING
   );
 
@@ -22,10 +22,9 @@ export const Reader = () => {
     new Map<String, Array<DefinitionDTO>>()
   );
 
-  const handleSubmit = (language: string, text: string): Promise<void> => {
-    return getWords(language, text).then((words) =>
-      getDefinitions(language, words)
-    );
+  const handleSubmit = async (language: string, text: string): Promise<void> => {
+    const words = await getWords(language, text);
+    return await getDefinitions(language, words);
   };
 
   const getWords = async (

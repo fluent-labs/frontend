@@ -10,7 +10,7 @@ class LanguageInput extends Component<LanguageInputProps> {
 
   handleSubmit = () => {
     const { text, language } = this.state;
-    this.props.onSubmit({ text: text, language: language });
+    this.props.onSubmit(language, text);
   };
 
   render = () => {
