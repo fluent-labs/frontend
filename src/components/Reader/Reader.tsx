@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Divider, Transition } from "semantic-ui-react";
 
 import { ApiClient, DefinitionDTO, WordDTO } from "../../client/api/ApiClient";
-import { SubmissionState } from "../../types/Enums";
 import LanguageInput from "./LanguageInput";
 import { Vocabulary } from "./Vocabulary";
 
@@ -22,6 +21,7 @@ export const Reader = () => {
     new Map<String, Array<DefinitionDTO>>()
   );
 
+  // Do the tokenization and get the words from the document
   useEffect(() => {
     if (submitted) {
       client.getWordsInDocument(language, text).then(result => {
@@ -30,6 +30,8 @@ export const Reader = () => {
     }
   }, [submitted, language, text]);
 
+
+  // Look up definitions for the words if submitted
   useEffect(() => {
     if (words.length > 0) {
       const tokens = words.map((word) => word.token);
