@@ -53,7 +53,7 @@ export const Reader = () => {
       </Transition>
       <Divider />
       <Transition visible={submitted} animation="scale" duration={500}>
-        <Vocabulary words={words} definitions={definitions} />
+        <Vocabulary text={text} words={words} definitions={definitions} />
       </Transition>
     </div>
   );

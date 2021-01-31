@@ -6,6 +6,7 @@ import { WordSelector } from "./WordSelector";
 import { DefinitionDTO, WordDTO } from "../../client/api/ApiClient";
 
 interface VocabularyProps {
+  text: string;
   words: Array<WordDTO>;
   definitions: Map<String, Array<DefinitionDTO>>;
 }
