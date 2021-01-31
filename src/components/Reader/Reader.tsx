@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Divider, Transition } from "semantic-ui-react";
 
 import { ApiClient, DefinitionDTO, WordDTO } from "../../client/api/ApiClient";
-import { Language, SubmissionState } from "../../types/Enums";
+import { SubmissionState } from "../../types/Enums";
 import LanguageInput from "./LanguageInput";
 import { Vocabulary } from "./Vocabulary";
 
@@ -22,14 +22,14 @@ export const Reader = () => {
     new Map<String, Array<DefinitionDTO>>()
   );
 
-  const handleSubmit = (language: Language, text: string): Promise<void> => {
+  const handleSubmit = (language: string, text: string): Promise<void> => {
     return getWords(language, text).then((words) =>
       getDefinitions(language, words)
     );
   };
 
   const getWords = async (
-    language: Language,
+    language: string,
     text: string
   ): Promise<Array<WordDTO>> => {
     setWordsState(SubmissionState.LOADING);
@@ -45,7 +45,7 @@ export const Reader = () => {
   };
 
   const getDefinitions = (
-    language: Language,
+    language: string,
     words: Array<WordDTO>
   ): Promise<void> => {
     const tokens = words.map((word) => word.token);
