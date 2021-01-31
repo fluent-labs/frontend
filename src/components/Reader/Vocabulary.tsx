@@ -10,7 +10,6 @@ interface VocabularyProps {
 }
 
 export const Vocabulary = ({ words }: VocabularyProps) => {
-
   return (
     <Container text>
       <Header as="h2">Words</Header>

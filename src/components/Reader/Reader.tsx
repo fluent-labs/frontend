@@ -24,26 +24,25 @@ export const Reader = () => {
   // Do the tokenization and get the words from the document
   useEffect(() => {
     if (submitted) {
-      client.getWordsInDocument(language, text).then(result => {
+      client.getWordsInDocument(language, text).then((result) => {
         setWords(result);
       });
     }
   }, [submitted, language, text]);
 
-
   // Look up definitions for the words if submitted
   useEffect(() => {
     if (words.length > 0) {
       const tokens = words.map((word) => word.token);
-      client.getDefinitions(language, tokens).then(results => {
+      client.getDefinitions(language, tokens).then((results) => {
         setDefinitions(results);
       });
     }
   }, [language, words]);
 
-  const handleSubmit = async (language: string, text: string): Promise<void> => {
-    setLanguage(language);
-    setText(text);
+  const handleSubmit = async (lang: string, doc: string): Promise<void> => {
+    setLanguage(lang);
+    setText(doc);
     setSubmitted(true);
   };
 
