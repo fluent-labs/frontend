@@ -3,10 +3,11 @@ import React from "react";
 import { Container, Header } from "semantic-ui-react";
 
 import { WordSelector } from "./WordSelector";
-import { WordDTO } from "../../client/api/ApiClient";
+import { DefinitionDTO, WordDTO } from "../../client/api/ApiClient";
 
 interface VocabularyProps {
   words: Array<WordDTO>;
+  definitions: Map<String, Array<DefinitionDTO>>;
 }
 
 export const Vocabulary = ({ words }: VocabularyProps) => {
