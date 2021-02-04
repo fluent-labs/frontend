@@ -42,7 +42,15 @@ export class ApiClient {
       `${this.hostname}/v1/language/definitions/${language}/ENGLISH/`,
       { words: tokens }
     );
-    return response.data;
+
+    // Confusingly axios returns an object, not a map.
+    // We manually do the conversion here.
+    const definitions = new Map<string, Array<DefinitionDTO>>();
+    for(const [key, value] of Object.entries(response.data)) {
+      definitions.set(key, value);
+    }
+
+    return definitions;
   };
 
   getWordsInDocument = async (
