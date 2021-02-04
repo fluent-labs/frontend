@@ -34,6 +34,25 @@ export class ApiClient {
     return response.data;
   };
 
+  getDefinitions = async (
+    language: string,
+    tokens: Array<string>
+  ): Promise<Map<string, Array<DefinitionDTO>>> => {
+    const response = await axios.post<Map<string, Array<DefinitionDTO>>>(
+      `${this.hostname}/v1/language/definitions/${language}/ENGLISH/`,
+      { words: tokens }
+    );
+
+    // Confusingly axios returns an object, not a map.
+    // We manually do the conversion here.
+    const definitions = new Map<string, Array<DefinitionDTO>>();
+    for (const [key, value] of Object.entries(response.data)) {
+      definitions.set(key, value);
+    }
+
+    return definitions;
+  };
+
   getWordsInDocument = async (
     language: string,
     document: string

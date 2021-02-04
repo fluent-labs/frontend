@@ -1,76 +1,58 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 
-import { Divider, Transition } from "semantic-ui-react";
+import { Divider } from "antd";
 
 import { ApiClient, WordDTO } from "../../client/api/ApiClient";
+import { DefinitionsStore } from "../../model/DefinitionsStore";
 import LanguageInput from "./LanguageInput";
 import { Vocabulary } from "./Vocabulary";
 
-interface SubmitText {
-  text: string;
-  language: string;
-}
+const client = new ApiClient();
 
-export enum SubmissionState {
-  PENDING,
-  LOADING,
-  SUCCESS,
-  FAILURE,
-}
+const emptyArray: WordDTO[] = [];
 
-interface ReaderProps {}
+export const Reader = () => {
+  const [submitted, setSubmitted] = useState(false);
 
-interface ReaderState {
-  language: string;
-  submissionState: SubmissionState;
-  words: Array<WordDTO>;
-}
+  const [language, setLanguage] = useState("ENGLISH");
+  const [text, setText] = useState("");
 
-class Reader extends Component<ReaderProps, ReaderState> {
-  state = {
-    language: "",
-    submissionState: SubmissionState.PENDING,
-    words: [],
-  };
-  client = new ApiClient();
+  const [words, setWords] = useState(emptyArray);
+  const [definitions, setDefinitions] = useState(
+    new DefinitionsStore(new Map())
+  );
 
-  handleSubmit = ({ text, language }: SubmitText) => {
-    this.setState({
-      language: language,
-      submissionState: SubmissionState.LOADING,
-    });
-    this.client
-      .getWordsInDocument(language, text)
-      .then((result) => {
-        this.setState({
-          submissionState: SubmissionState.SUCCESS,
-          words: result,
-        });
-      })
-      .catch((e) => {
-        this.setState({ submissionState: SubmissionState.FAILURE });
+  // Do the tokenization and get the words from the document
+  useEffect(() => {
+    if (submitted) {
+      client.getWordsInDocument(language, text).then((result) => {
+        setWords(result);
       });
+    }
+  }, [submitted, language, text]);
+
+  // Look up definitions for the words if submitted
+  useEffect(() => {
+    if (words.length > 0) {
+      const tokens = words.map((word) => word.token);
+      client.getDefinitions(language, tokens).then((results) => {
+        // This mutates the object anyway, but we want to trigger a re-rendering.
+        setDefinitions(new DefinitionsStore(results));
+      });
+    }
+  }, [language, words]);
+
+  const handleSubmit = async (lang: string, doc: string): Promise<void> => {
+    setLanguage(lang);
+    setText(doc);
+    setSubmitted(true);
   };
 
-  render = () => {
-    const hasInput = this.state.submissionState === SubmissionState.PENDING;
-    const hasWords = this.state.submissionState !== SubmissionState.PENDING;
-    return (
-      <div>
-        <Transition visible={hasInput} animation="scale" duration={500}>
-          <LanguageInput onSubmit={this.handleSubmit} />
-        </Transition>
-        <Divider />
-        <Transition visible={hasWords} animation="scale" duration={500}>
-          <Vocabulary
-            language={this.state.language}
-            submissionState={this.state.submissionState}
-            words={this.state.words}
-          />
-        </Transition>
-      </div>
-    );
-  };
-}
-
-export default Reader;
+  return (
+    <React.Fragment>
+      <LanguageInput onSubmit={handleSubmit} />
+      <Divider />
+      <Vocabulary text={text} words={words} definitions={definitions} />
+    </React.Fragment>
+  );
+};

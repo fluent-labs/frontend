@@ -1,57 +1,36 @@
 import React from "react";
 
-import {
-  Container,
-  Dimmer,
-  Divider,
-  Item,
-  Header,
-  Loader,
-} from "semantic-ui-react";
+import { Typography } from "antd";
 
-import { Word } from "./Word";
-import { WordSelector } from "./WordSelector";
 import { WordDTO } from "../../client/api/ApiClient";
-import { SubmissionState } from "./Reader";
+import { DefinitionsStore } from "../../model/DefinitionsStore";
+import { Word } from "./Word";
+
+const { Paragraph } = Typography;
 
 interface VocabularyProps {
-  language: string;
-  submissionState: SubmissionState;
+  text: string;
   words: Array<WordDTO>;
+  definitions: DefinitionsStore;
 }
 
-export const Vocabulary = ({
-  language,
-  submissionState,
-  words,
-}: VocabularyProps) => {
-  if (submissionState === SubmissionState.PENDING)
-    return <p>Submit text to see some vocabulary.</p>;
-
-  if (submissionState === SubmissionState.LOADING) {
-    return (
-      <Dimmer active>
-        <Loader />
-      </Dimmer>
-    );
+export const Vocabulary = ({ text, words, definitions }: VocabularyProps) => {
+  if (words.length == 0) {
+    return <Paragraph>{text}</Paragraph>;
   }
-  if (submissionState === SubmissionState.FAILURE)
-    return <p>Error loading vocabulary.</p>;
 
   return (
-    <div>
-      <Container text>
-        <Header as="h2">Words</Header>
-        {words.map((word) => {
-          return <WordSelector key={word.token} word={word} selected />;
-        })}
-      </Container>
-      <Divider />
-      <Item.Group divided>
-        {words.map((word: WordDTO) => (
-          <Word key={word.token} language={language} word={word} />
-        ))}
-      </Item.Group>
-    </div>
+    <Paragraph>
+      {words.map((word: WordDTO) => {
+        const token = word.token;
+        return (
+          <Word
+            key={word.token}
+            word={word}
+            definitions={definitions.get(token)}
+          />
+        );
+      })}
+    </Paragraph>
   );
 };
