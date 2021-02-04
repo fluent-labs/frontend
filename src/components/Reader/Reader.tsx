@@ -18,7 +18,9 @@ export const Reader = () => {
   const [text, setText] = useState("");
 
   const [words, setWords] = useState(emptyArray);
-  const [definitions, setDefinitions] = useState(new DefinitionsStore(new Map()));
+  const [definitions, setDefinitions] = useState(
+    new DefinitionsStore(new Map())
+  );
 
   // Do the tokenization and get the words from the document
   useEffect(() => {

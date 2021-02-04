@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Radio } from 'antd';
+import { Button, Input, Radio } from "antd";
 
 import "antd/lib/button/style/index.css";
 import "antd/lib/input/style/index.css";
@@ -24,20 +24,28 @@ class LanguageInput extends Component<LanguageInputProps> {
 
     return (
       <React.Fragment>
-          <TextArea
-            placeholder="Enter some text that you would like to read"
-            name="text"
-            onChange={(e) => this.setState({ text: e.target.value })}
-            value={text}
-          />
-          <Radio.Group defaultValue="ENGLISH" buttonStyle="solid" onChange={(e) => this.setState({ language: e.target.value })}>
-            <Radio.Button value="ENGLISH">English</Radio.Button>
-            <Radio.Button value="CHINESE">Chinese</Radio.Button>
-            <Radio.Button value="SPANISH">Spanish</Radio.Button>
-          </Radio.Group>
-          <Button type="primary" shape="round" onClick={(e) => this.handleSubmit()}>
-            Submit
-          </Button>
+        <TextArea
+          placeholder="Enter some text that you would like to read"
+          name="text"
+          onChange={(e) => this.setState({ text: e.target.value })}
+          value={text}
+        />
+        <Radio.Group
+          defaultValue="ENGLISH"
+          buttonStyle="solid"
+          onChange={(e) => this.setState({ language: e.target.value })}
+        >
+          <Radio.Button value="ENGLISH">English</Radio.Button>
+          <Radio.Button value="CHINESE">Chinese</Radio.Button>
+          <Radio.Button value="SPANISH">Spanish</Radio.Button>
+        </Radio.Group>
+        <Button
+          type="primary"
+          shape="round"
+          onClick={(e) => this.handleSubmit()}
+        >
+          Submit
+        </Button>
       </React.Fragment>
     );
   };

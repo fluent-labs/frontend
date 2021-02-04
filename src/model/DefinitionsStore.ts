@@ -9,14 +9,17 @@ export class DefinitionsStore {
 
   get = (token: string): Array<DefinitionDTO> => {
     return this.getOrDefault(token, []);
-  }
+  };
 
-  getOrDefault = (token: string, defaultResult: Array<DefinitionDTO>): Array<DefinitionDTO> => {
-    let defs: Array<DefinitionDTO> | undefined = this.definitions.get(token);
+  getOrDefault = (
+    token: string,
+    defaultResult: Array<DefinitionDTO>
+  ): Array<DefinitionDTO> => {
+    const defs: Array<DefinitionDTO> | undefined = this.definitions.get(token);
     if (defs === undefined) {
       return defaultResult;
     } else {
       return defs;
     }
-  }
+  };
 }

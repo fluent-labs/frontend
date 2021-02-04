@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Typography } from 'antd';
+import { Typography } from "antd";
 
 import { WordDTO } from "../../client/api/ApiClient";
 import { DefinitionsStore } from "../../model/DefinitionsStore";
@@ -16,15 +16,21 @@ interface VocabularyProps {
 
 export const Vocabulary = ({ text, words, definitions }: VocabularyProps) => {
   if (words.length == 0) {
-    return (<Paragraph>{text}</Paragraph>);
+    return <Paragraph>{text}</Paragraph>;
   }
 
   return (
     <Paragraph>
       {words.map((word: WordDTO) => {
         const token = word.token;
-        return <Word key={word.token} word={word} definitions={definitions.get(token)}/>
-    })}
+        return (
+          <Word
+            key={word.token}
+            word={word}
+            definitions={definitions.get(token)}
+          />
+        );
+      })}
     </Paragraph>
   );
 };

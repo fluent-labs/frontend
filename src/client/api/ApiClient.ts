@@ -46,7 +46,7 @@ export class ApiClient {
     // Confusingly axios returns an object, not a map.
     // We manually do the conversion here.
     const definitions = new Map<string, Array<DefinitionDTO>>();
-    for(const [key, value] of Object.entries(response.data)) {
+    for (const [key, value] of Object.entries(response.data)) {
       definitions.set(key, value);
     }
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button,Card, Popover, Typography } from 'antd';
+import { Card, Popover, Typography } from "antd";
 import { WordDTO, DefinitionDTO } from "../../client/api/ApiClient";
 
 import "antd/lib/popover/style/index.css";
@@ -15,13 +15,13 @@ interface WordProps {
 }
 
 export const Word = ({ word, definitions }: WordProps) => {
-  console.log(`${word.token}: ${definitions}`);
-
   if (definitions.length > 0) {
     const content = (
       <Card title={definitions[0].pronunciation}>
         <ul>
-          {definitions[0].subdefinitions.map((subdefinition: string) => <li>{subdefinition}</li>)}
+          {definitions[0].subdefinitions.map((subdefinition: string) => (
+            <li key={subdefinition}>{subdefinition}</li>
+          ))}
         </ul>
       </Card>
     );
@@ -29,18 +29,22 @@ export const Word = ({ word, definitions }: WordProps) => {
     return (
       <React.Fragment>
         <Popover content={content} title="Title" trigger={["hover"]}>
-          <Text underline type="success">{word.token}</Text>
+          <Text underline type="success">
+            {word.token}
+          </Text>
         </Popover>
         <Text> </Text>
       </React.Fragment>
-    )
+    );
   }
 
   // No definition case, TODO find a good way to indicate it.
   return (
     <React.Fragment>
-      <Text underline type="secondary">{word.token}</Text>
+      <Text underline type="secondary">
+        {word.token}
+      </Text>
       <Text> </Text>
     </React.Fragment>
-  )
-}
+  );
+};
