@@ -1,28 +1,30 @@
 import React from "react";
 
-import { Container } from "semantic-ui-react";
+import { Typography } from 'antd';
 
-import { WordSelector } from "./WordSelector";
-import { DefinitionDTO, WordDTO } from "../../client/api/ApiClient";
+import { WordDTO } from "../../client/api/ApiClient";
+import { DefinitionsStore } from "../../model/DefinitionsStore";
+import { Word } from "./Word";
+
+const { Paragraph } = Typography;
 
 interface VocabularyProps {
   text: string;
   words: Array<WordDTO>;
-  definitions: Map<String, Array<DefinitionDTO>>;
+  definitions: DefinitionsStore;
 }
 
-export const Vocabulary = ({ text, words }: VocabularyProps) => {
-  const tokens = words.map((word) => word.token);
-
+export const Vocabulary = ({ text, words, definitions }: VocabularyProps) => {
   if (words.length == 0) {
-    return (<Container text>{text}</Container>);
+    return (<Paragraph>{text}</Paragraph>);
   }
 
   return (
-    <Container text>
-      {words.map((word) => {
-        return <WordSelector key={word.token} word={word} selected />;
-      })}
-    </Container>
+    <Paragraph>
+      {words.map((word: WordDTO) => {
+        const token = word.token;
+        return <Word key={word.token} word={word} definitions={definitions.get(token)}/>
+    })}
+    </Paragraph>
   );
 };

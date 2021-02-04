@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Button, Dropdown, Form, TextArea } from "semantic-ui-react";
+import { Button, Input, Radio } from 'antd';
+
+import "antd/lib/button/style/index.css";
+import "antd/lib/input/style/index.css";
+import "antd/lib/radio/style/index.css";
+
+const { TextArea } = Input;
 
 type LanguageInputProps = {
   onSubmit: Function;
@@ -14,33 +20,24 @@ class LanguageInput extends Component<LanguageInputProps> {
   };
 
   render = () => {
-    const { text, language } = this.state;
-
-    const languages = [
-      { key: "en", value: "ENGLISH", text: "English" },
-      { key: "es", value: "SPANISH", text: "Spanish" },
-      { key: "zh", value: "CHINESE", text: "Chinese" },
-    ];
+    const { text } = this.state;
 
     return (
       <React.Fragment>
-        <Form onSubmit={this.handleSubmit}>
           <TextArea
             placeholder="Enter some text that you would like to read"
             name="text"
-            onChange={(_e, { name, value }) => this.setState({ [name]: value })}
+            onChange={(e) => this.setState({ text: e.target.value })}
             value={text}
           />
-          <Dropdown
-            placeholder="Which language is it in?"
-            options={languages}
-            name="language"
-            onChange={(_e, { name, value }) => this.setState({ [name]: value })}
-            value={language}
-            selection
-          />
-          <Button type="submit">Submit</Button>
-        </Form>
+          <Radio.Group defaultValue="ENGLISH" buttonStyle="solid" onChange={(e) => this.setState({ text: e.target.value })}>
+            <Radio.Button value="ENGLISH">English</Radio.Button>
+            <Radio.Button value="CHINESE">Chinese</Radio.Button>
+            <Radio.Button value="SPANISH">Spanish</Radio.Button>
+          </Radio.Group>
+          <Button type="primary" shape="round" onClick={(e) => this.handleSubmit()}>
+            Submit
+          </Button>
       </React.Fragment>
     );
   };

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import { Divider, Transition } from "semantic-ui-react";
+import { Divider } from "antd";
 
-import { ApiClient, DefinitionDTO, WordDTO } from "../../client/api/ApiClient";
+import { ApiClient, WordDTO } from "../../client/api/ApiClient";
+import { DefinitionsStore } from "../../model/DefinitionsStore";
 import LanguageInput from "./LanguageInput";
 import { Vocabulary } from "./Vocabulary";
 
@@ -17,9 +18,7 @@ export const Reader = () => {
   const [text, setText] = useState("");
 
   const [words, setWords] = useState(emptyArray);
-  const [definitions, setDefinitions] = useState(
-    new Map<String, Array<DefinitionDTO>>()
-  );
+  const [definitions, setDefinitions] = useState(new DefinitionsStore(new Map()));
 
   // Do the tokenization and get the words from the document
   useEffect(() => {
@@ -35,7 +34,8 @@ export const Reader = () => {
     if (words.length > 0) {
       const tokens = words.map((word) => word.token);
       client.getDefinitions(language, tokens).then((results) => {
-        setDefinitions(results);
+        // This mutates the object anyway, but we want to trigger a re-rendering.
+        setDefinitions(new DefinitionsStore(results));
       });
     }
   }, [language, words]);
@@ -47,14 +47,10 @@ export const Reader = () => {
   };
 
   return (
-    <div>
-      <Transition visible={!submitted} animation="scale" duration={500}>
-        <LanguageInput onSubmit={handleSubmit} />
-      </Transition>
+    <React.Fragment>
+      <LanguageInput onSubmit={handleSubmit} />
       <Divider />
-      <Transition visible={submitted} animation="scale" duration={500}>
-        <Vocabulary text={text} words={words} definitions={definitions} />
-      </Transition>
-    </div>
+      <Vocabulary text={text} words={words} definitions={definitions} />
+    </React.Fragment>
   );
 };
