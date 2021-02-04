@@ -32,26 +32,3 @@ jobs:
       run: npm run build
       env:
         CI: true
-
-  storybook:
-    name: Build and test storybook
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2.3.4
-
-    - uses: actions/setup-node@v2.1.4
-      name: Install node 12
-      with:
-        node-version: '12.x'
-
-    - name: Install dependencies
-      run: |
-        npm ci
-      env:
-        CI: true
-
-    - name: Build storybook
-      run: npm run build-storybook
-      env:
-        CI: true
