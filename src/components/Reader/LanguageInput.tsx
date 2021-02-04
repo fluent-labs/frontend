@@ -30,7 +30,7 @@ class LanguageInput extends Component<LanguageInputProps> {
             onChange={(e) => this.setState({ text: e.target.value })}
             value={text}
           />
-          <Radio.Group defaultValue="ENGLISH" buttonStyle="solid" onChange={(e) => this.setState({ text: e.target.value })}>
+          <Radio.Group defaultValue="ENGLISH" buttonStyle="solid" onChange={(e) => this.setState({ language: e.target.value })}>
             <Radio.Button value="ENGLISH">English</Radio.Button>
             <Radio.Button value="CHINESE">Chinese</Radio.Button>
             <Radio.Button value="SPANISH">Spanish</Radio.Button>

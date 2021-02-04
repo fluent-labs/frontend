@@ -1,9 +1,10 @@
 import React from "react";
 
-import { Card, Popover, Typography } from 'antd';
+import { Button,Card, Popover, Typography } from 'antd';
 import { WordDTO, DefinitionDTO } from "../../client/api/ApiClient";
 
 import "antd/lib/popover/style/index.css";
+import "antd/lib/typography/style/index.css";
 
 const { Text } = Typography;
 
@@ -27,7 +28,7 @@ export const Word = ({ word, definitions }: WordProps) => {
 
     return (
       <React.Fragment>
-        <Popover content={content} title="Title">
+        <Popover content={content} title="Title" trigger={["hover"]}>
           <Text underline type="success">{word.token}</Text>
         </Popover>
         <Text> </Text>
