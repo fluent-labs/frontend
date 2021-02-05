@@ -16,7 +16,10 @@ class LanguageInput extends Component<LanguageInputProps> {
 
   handleSubmit = () => {
     const { text, language } = this.state;
-    this.props.onSubmit(language, text);
+
+    if (text.length > 0) {
+      this.props.onSubmit(language, text);
+    }
   };
 
   render = () => {
@@ -33,7 +36,10 @@ class LanguageInput extends Component<LanguageInputProps> {
         <Radio.Group
           defaultValue="ENGLISH"
           buttonStyle="solid"
-          onChange={(e) => this.setState({ language: e.target.value })}
+          onChange={(e) => {
+            this.setState({ language: e.target.value });
+            this.handleSubmit();
+          }}
         >
           <Radio.Button value="ENGLISH">English</Radio.Button>
           <Radio.Button value="CHINESE">Chinese</Radio.Button>
