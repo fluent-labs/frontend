@@ -34,7 +34,7 @@ export const Reader = () => {
   // Look up definitions for the words if submitted
   useEffect(() => {
     if (words.length > 0) {
-      const tokens = words.map((word) => word.token);
+      const tokens = words.map((word) => word.processedToken);
       client.getDefinitions(language, tokens).then((results) => {
         // This mutates the object anyway, but we want to trigger a re-rendering.
         setDefinitions(new DefinitionsStore(results));

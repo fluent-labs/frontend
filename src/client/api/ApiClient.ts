@@ -13,6 +13,7 @@ export type DefinitionDTO = {
 
 export type WordDTO = {
   token: string;
+  processedToken: string;
   tag: string;
   lemma: string;
   definitions: Array<DefinitionDTO>;
