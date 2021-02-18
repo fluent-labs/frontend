@@ -15,7 +15,7 @@ import {
   ActionsContainer,
 } from "./style"
 
-const NAV_ITEMS = ["Features", "Product", "Pricing", ""]
+const NAV_ITEMS = [["Features", "#features"], ["Product", "/product"], ["Pricing", "#pricing"]]
 
 export default class Navigation extends Component {
   state = {
@@ -48,15 +48,15 @@ export default class Navigation extends Component {
   }
 
   getNavAnchorLink = item => (
-    <AnchorLink href={`#${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
-      {item}
+    <AnchorLink href={item[1]} onClick={this.closeMobileMenu}>
+      {item[0]}
     </AnchorLink>
   )
 
   getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>
       <Scrollspy
-        items={NAV_ITEMS.map(item => item.toLowerCase())}
+        items={NAV_ITEMS.map(item => item[0].toLowerCase())}
         currentClassName="active"
         mobile={mobile}
         offset={-64}

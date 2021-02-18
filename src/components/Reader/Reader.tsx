@@ -7,8 +7,6 @@ import { DefinitionsStore } from "../../model/DefinitionsStore";
 import LanguageInput from "./LanguageInput";
 import { Vocabulary } from "./Vocabulary";
 
-const client = new ApiClient();
-
 const emptyArray: WordDTO[] = [];
 
 export const Reader = () => {
@@ -24,6 +22,7 @@ export const Reader = () => {
 
   // Do the tokenization and get the words from the document
   useEffect(() => {
+    const client = new ApiClient();
     if (submitted) {
       client.getWordsInDocument(language, text).then((result) => {
         setWords(result);
@@ -33,6 +32,7 @@ export const Reader = () => {
 
   // Look up definitions for the words if submitted
   useEffect(() => {
+    const client = new ApiClient();
     if (words.length > 0) {
       const tokens = words.map((word) => word.processedToken);
       client.getDefinitions(language, tokens).then((results) => {
