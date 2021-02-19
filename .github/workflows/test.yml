@@ -26,7 +26,7 @@ jobs:
       run: npx audit-ci --moderate
 
     - name: Lint
-      run: npm run lint
+      run: npm run lint-ci
 
     - name: Create build
       run: npm run build
