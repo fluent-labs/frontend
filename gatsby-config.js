@@ -9,6 +9,7 @@ module.exports = {
     author: `Lucas Kjaero-Zhang`,
   },
   plugins: [
+    `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
