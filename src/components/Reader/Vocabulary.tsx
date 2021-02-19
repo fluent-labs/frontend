@@ -22,7 +22,7 @@ export const Vocabulary = ({ text, words, definitions }: VocabularyProps) => {
   return (
     <Paragraph>
       {words.map((word: WordDTO) => {
-        const token = word.token;
+        const token = word.processedToken;
         return (
           <Word
             key={word.token}
