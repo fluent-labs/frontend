@@ -35,7 +35,10 @@
     "no-plusplus": "off",
     "no-shadow": "warn",
     "no-underscore-dangle": "warn",
-    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "no-unused-expressions": [
+      "error",
+      { "allowShortCircuit": true, "allowTernary": true }
+    ],
     "no-nested-ternary": "error",
     "no-unused-vars": "error",
     "prettier/prettier": ["warn"],
