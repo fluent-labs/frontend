@@ -1,6 +1,6 @@
-// Theme
+import { DefaultTheme } from "styled-components";
 
-const theme = {
+export const theme: DefaultTheme = {
   font: {
     primary: `'HK Grotesk Normal'`,
     secondary: `'HK Grotesk Medium'`,
@@ -21,7 +21,6 @@ const theme = {
     larger: "font-size: 40px; line-height: 50px;",
     xlarge: "font-size: 48px; line-height: 48px;",
   },
-
   color: {
     primary: "#071435",
     secondary: "#098c8c",
@@ -50,4 +49,55 @@ const theme = {
   },
 };
 
-export default theme;
+/* eslint-disable */
+declare module "styled-components" {
+  export interface DefaultTheme {
+    font: {
+      primary: string;
+      secondary: string;
+      light: string;
+      normal: string;
+      medium: string;
+      semibold: string;
+      bold: string;
+      extrabold: string;
+    };
+    font_size: {
+      xxxsmall: string;
+      xxsmall: string;
+      xsmall: string;
+      small: string;
+      regular: string;
+      large: string;
+      larger: string;
+      xlarge: string;
+    };
+    color: {
+      primary: string;
+      secondary: string;
+      accent: string;
+      background: {
+        white: string;
+        light: string;
+      };
+      white: {
+        regular: string;
+        lessdark: string;
+        dark: string;
+        darker: string;
+      };
+      black: {
+        lightest: string;
+        light: string;
+        regular: string;
+      };
+    };
+    screen: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+    };
+  }
+}
+/* eslint-enable */

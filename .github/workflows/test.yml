@@ -23,7 +23,7 @@ jobs:
         CI: true
 
     - name: Validate security of dependencies
-      run: npx audit-ci --moderate
+      run: npx audit-ci --high
 
     - name: Lint
       run: npm run lint-ci
