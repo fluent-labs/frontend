@@ -35,7 +35,7 @@ const Footer = () => (
 );
 
 const FooterWrapper = styled.footer`
-  background-color: white;
+  background-color: ${(props) => props.theme.color.background.white};
   margin: 80px 0 0;
   padding: 0 0 80px;
 `;
