@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 import { Section, Container } from "../global";
 
-const Features = () => (
-  <Section id="features">
+const Benefits = () => (
+  <Section id="benefits">
     <StyledContainer>
       <Subtitle>Benefits</Subtitle>
       <SectionTitle>A reader for the internet</SectionTitle>
@@ -37,7 +37,7 @@ const Features = () => (
   </Section>
 );
 
-export default Features;
+export default Benefits;
 
 const StyledContainer = styled(Container)``;
 
