@@ -16,9 +16,9 @@ import {
 } from "./style";
 
 const NAV_ITEMS = [
-  ["Features", "#features"],
-  ["Product", "/product"],
-  ["Pricing", "#pricing"],
+  ["Benefits", "#benefits"],
+  ["Demo", "/demo/"],
+  // ["Pricing", "#pricing"],
 ];
 
 export default class Navigation extends Component {
