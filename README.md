@@ -1,3 +1,3 @@
 # Frontend
 
-This is a create-react-app. This contains all the customer facing logic of the reader.
+The main marketing page for the foreign language reader. Also, the reader frontend.
