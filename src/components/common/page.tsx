@@ -16,15 +16,13 @@ const Page = ({ children, title }: PageProps) => (
   <Layout>
     <SEO title={title} />
     <Navigation />
-    <>
-      {children}
-    </>
+    <>{children}</>
     <Footer />
   </Layout>
 );
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 export default Page;

@@ -49,7 +49,6 @@ export const theme: DefaultTheme = {
   },
 };
 
-
 /* eslint-disable */
 declare module "styled-components" {
   export interface DefaultTheme {
@@ -62,7 +61,7 @@ declare module "styled-components" {
       semibold: string;
       bold: string;
       extrabold: string;
-    }
+    };
     font_size: {
       xxxsmall: string;
       xxsmall: string;
@@ -72,7 +71,7 @@ declare module "styled-components" {
       large: string;
       larger: string;
       xlarge: string;
-    }
+    };
     color: {
       primary: string;
       secondary: string;
@@ -80,25 +79,25 @@ declare module "styled-components" {
       background: {
         white: string;
         light: string;
-      }
+      };
       white: {
         regular: string;
         lessdark: string;
         dark: string;
         darker: string;
-      }
+      };
       black: {
         lightest: string;
         light: string;
         regular: string;
-      }
-    }
+      };
+    };
     screen: {
       xs: string;
       sm: string;
       md: string;
       lg: string;
-    }
+    };
   }
 }
 /* eslint-enable */

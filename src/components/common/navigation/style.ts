@@ -23,7 +23,7 @@ export const StyledContainer = styled(Container)`
 `;
 
 interface NavListWrapperProps {
-  mobile?: boolean
+  mobile?: boolean;
 }
 
 export const NavListWrapper = styled.div<NavListWrapperProps>`
