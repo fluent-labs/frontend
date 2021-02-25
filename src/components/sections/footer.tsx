@@ -29,7 +29,7 @@ const Footer = () => (
       </FooterColumn>
     </FooterColumnContainer>
     <BrandContainer>
-      <Logo>Boundaryless Reading</Logo>
+      <Logo>FluentLabs Reader</Logo>
     </BrandContainer>
   </FooterWrapper>
 );

@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Boundaryless Reading`,
+    title: `FluentLabs Reader`,
     description: `A reading app that combines the support of a textbook with the freedom of the internet.`,
     author: `Lucas Kjaero-Zhang`,
   },
