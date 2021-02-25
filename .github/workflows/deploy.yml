@@ -33,9 +33,6 @@ jobs:
       with:
         name: gatsby-public
         path: public
-
-    - name: Deploy to S3
-      run: aws s3 sync public/ s3://www.foreignlanguagereader.com --no-progress --delete
   
   deploy-foreign-language-reader:
     name: Deploy to www.foreignlanguagereader.com
