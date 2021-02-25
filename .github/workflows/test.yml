@@ -62,7 +62,7 @@ jobs:
 
   deploy-fluentlabs:
     name: Deploy to preprod.fluentlabs.io
-    needs: [build-frontend]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@master
