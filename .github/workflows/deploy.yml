@@ -5,9 +5,9 @@ on:
     branches: main
 
 jobs:
-  deploy-frontend:
+  build-frontend:
     runs-on: ubuntu-latest
-    name: Deploy frontend
+    name: Build frontend
 
     steps:
     - uses: actions/checkout@v2.3.4
@@ -27,13 +27,54 @@ jobs:
       run: npm run build
       env:
         CI: true
-
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
+    
+    - uses: actions/upload-artifact@master
+      name: Upload website content
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2
+        name: gatsby-public
+        path: public
 
     - name: Deploy to S3
       run: aws s3 sync public/ s3://www.foreignlanguagereader.com --no-progress --delete
+  
+  deploy-foreign-language-reader:
+    name: Deploy to www.foreignlanguagereader.com
+    needs: [build-frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@master
+        name: Download website content
+        with:
+          name: gatsby-public
+          path: public
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      
+      - name: Push to S3
+        run: aws s3 sync public/ s3://www.foreignlanguagereader.com --no-progress --delete
+
+  deploy-fluentlabs:
+    name: Deploy to www.fluentlabs.io
+    needs: [build-frontend]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@master
+        name: Download website content
+        with:
+          name: gatsby-public
+          path: public
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      
+      - name: Push to S3
+        run: aws s3 sync public/ s3://www.fluentlabs.io --no-progress --delete
