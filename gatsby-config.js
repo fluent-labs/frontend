@@ -1,3 +1,5 @@
+/* eslint camelcase: "off", global-require: "off" */
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });

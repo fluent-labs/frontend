@@ -23,7 +23,7 @@
   },
   "rules": {
     "arrow-body-style": "off",
-    "camelcase": "warn",
+    "camelcase": ["warn", { "ignoreDestructuring": true }],
     "func-names": "off",
     "global-require": "warn",
     "import/no-dynamic-require": "warn",
