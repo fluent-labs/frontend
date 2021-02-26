@@ -32,21 +32,21 @@ const Benefits = () => {
   `);
 
   const {
-    benefits_subtitle,
-    benefits_section_title,
-    benefits_entries,
+    benefits_subtitle: benefitsSubtitle,
+    benefits_section_title: benefitsSectionTitle,
+    benefits_entries: benefitsEntries,
   }: BenefitsPage = data.prismicHomePage.data;
 
   return (
     <Section id="benefits">
       <StyledContainer>
-        <Subtitle>{benefits_subtitle}</Subtitle>
-        <SectionTitle>{benefits_section_title}</SectionTitle>
+        <Subtitle>{benefitsSubtitle}</Subtitle>
+        <SectionTitle>{benefitsSectionTitle}</SectionTitle>
         <FeaturesGrid>
-          {benefits_entries.map((entry: Benefit) => {
+          {benefitsEntries.map((entry: Benefit) => {
             const { title, text } = entry;
             return (
-              <FeatureItem>
+              <FeatureItem key={title}>
                 <FeatureTitle>{title}</FeatureTitle>
                 <FeatureText>{text}</FeatureText>
               </FeatureItem>
