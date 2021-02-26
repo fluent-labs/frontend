@@ -35,14 +35,14 @@ const Header = () => {
   };
 
   const {
-    header_subtitle,
-    header_title_one,
-    header_title_two,
-    header_title_three,
-    header_input_placeholder,
-    header_button_text,
-    header_form_subtitle,
-    header_form_subtitle_link_text,
+    header_subtitle: headerSubtitle,
+    header_title_one: headerTitleOne,
+    header_title_two: headerTitleTwo,
+    header_title_three: headerTitleThree,
+    header_input_placeholder: headerInputPlaceholder,
+    header_button_text: headerButtonText,
+    header_form_subtitle: headerFormSubtitle,
+    header_form_subtitle_link_text: headerFormSubtitleLinkText,
   } = data.prismicHomePage.data;
 
   return (
@@ -50,21 +50,21 @@ const Header = () => {
       <Container>
         <Flex>
           <HeaderTextGroup>
-            <Subtitle>{header_subtitle}</Subtitle>
+            <Subtitle>{headerSubtitle}</Subtitle>
             <h1>
-              {header_title_one}
+              {headerTitleOne}
               <br />
-              {header_title_two}
+              {headerTitleTwo}
             </h1>
-            <h2>{header_title_three}</h2>
+            <h2>{headerTitleThree}</h2>
             <HeaderForm onSubmit={handleSubmit}>
-              <HeaderInput placeholder={header_input_placeholder} />
-              <HeaderButton>{header_button_text}</HeaderButton>
+              <HeaderInput placeholder={headerInputPlaceholder} />
+              <HeaderButton>{headerButtonText}</HeaderButton>
             </HeaderForm>
             <FormSubtitle>
-              {header_form_subtitle}{" "}
+              {headerFormSubtitle}{" "}
               <FormSubtitleLink to="/">
-                {header_form_subtitle_link_text}
+                {headerFormSubtitleLinkText}
               </FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
