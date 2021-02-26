@@ -6,8 +6,7 @@
     "plugin:jest/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
-    "prettier",
-    "prettier/react"
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 2016,
