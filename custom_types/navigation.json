@@ -1,0 +1,115 @@
+{
+    "Main" : { },
+    "Header" : {
+      "navigation_links" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "title" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Title"
+              }
+            },
+            "href" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "href"
+              }
+            }
+          },
+          "label" : "Navigation links"
+        }
+      },
+      "signup_text" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Signup text",
+          "placeholder" : "SIGN UP"
+        }
+      }
+    },
+    "Footer" : {
+      "column_one_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Column one title",
+          "placeholder" : "Resources"
+        }
+      },
+      "footer_column_one_links" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "title" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Title"
+              }
+            },
+            "href" : {
+              "type" : "Link",
+              "config" : {
+                "label" : "href"
+              }
+            }
+          },
+          "label" : "Footer column one links"
+        }
+      },
+      "column_two_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Column one title",
+          "placeholder" : "Company"
+        }
+      },
+      "column_two_links" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "title" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Title"
+              }
+            },
+            "href" : {
+              "type" : "Link",
+              "config" : {
+                "label" : "href"
+              }
+            }
+          },
+          "label" : "Footer column two links"
+        }
+      },
+      "column_three_title" : {
+        "type" : "Text",
+        "config" : {
+          "label" : "Column three title",
+          "placeholder" : "Social"
+        }
+      },
+      "footer_column_three_links" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "title" : {
+              "type" : "Text",
+              "config" : {
+                "label" : "Title"
+              }
+            },
+            "href" : {
+              "type" : "Link",
+              "config" : {
+                "label" : "href"
+              }
+            }
+          },
+          "label" : "Footer column three links"
+        }
+      }
+    }
+  }
