@@ -1,41 +1,62 @@
 import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 
 import { Section, Container } from "../global";
 
-const Benefits = () => (
-  <Section id="benefits">
-    <StyledContainer>
-      <Subtitle>Benefits</Subtitle>
-      <SectionTitle>A reader for the internet</SectionTitle>
-      <FeaturesGrid>
-        <FeatureItem>
-          <FeatureTitle>Definitions</FeatureTitle>
-          <FeatureText>
-            See the meaning of any unfamiliar word, defined in your native
-            language.
-          </FeatureText>
-        </FeatureItem>
-        <FeatureItem>
-          <FeatureTitle>Vocabulary</FeatureTitle>
-          <FeatureText>
-            We remember which words you know, so you can focus on the new ones.
-          </FeatureText>
-        </FeatureItem>
-        <FeatureItem>
-          <FeatureTitle>Difficulty</FeatureTitle>
-          <FeatureText>
-            See how common a word is, so you only learn the important ones.
-          </FeatureText>
-        </FeatureItem>
-        <FeatureItem>
-          <FeatureTitle>Integration</FeatureTitle>
-          <FeatureText>Works with other tools you use like Anki.</FeatureText>
-        </FeatureItem>
-      </FeaturesGrid>
-    </StyledContainer>
-  </Section>
-);
+interface Benefit {
+  title: string;
+  text: string;
+}
+
+interface BenefitsPage {
+  benefits_subtitle: string;
+  benefits_section_title: string;
+  benefits_entries: Array<Benefit>;
+}
+
+const Benefits = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      prismicHomePage {
+        data {
+          benefits_subtitle
+          benefits_section_title
+          benefits_entries {
+            title
+            text
+          }
+        }
+      }
+    }
+  `);
+
+  const {
+    benefits_subtitle: benefitsSubtitle,
+    benefits_section_title: benefitsSectionTitle,
+    benefits_entries: benefitsEntries,
+  }: BenefitsPage = data.prismicHomePage.data;
+
+  return (
+    <Section id="benefits">
+      <StyledContainer>
+        <Subtitle>{benefitsSubtitle}</Subtitle>
+        <SectionTitle>{benefitsSectionTitle}</SectionTitle>
+        <FeaturesGrid>
+          {benefitsEntries.map((entry: Benefit) => {
+            const { title, text } = entry;
+            return (
+              <FeatureItem key={title}>
+                <FeatureTitle>{title}</FeatureTitle>
+                <FeatureText>{text}</FeatureText>
+              </FeatureItem>
+            );
+          })}
+        </FeaturesGrid>
+      </StyledContainer>
+    </Section>
+  );
+};
 
 export default Benefits;
 

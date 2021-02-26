@@ -1,3 +1,5 @@
+/* eslint camelcase: "off", global-require: "off" */
+
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -51,8 +53,21 @@ module.exports = {
         path: `${__dirname}/src/pages`,
       },
     },
+    {
+      resolve: "gatsby-source-prismic",
+      options: {
+        repositoryName: "fluentlabs",
+        linkResolver: () => (doc) => linkResolver(doc),
+        schemas: {
+          home_page: require("./custom_types/home_page.json"),
+        },
+        lang: "*",
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
 };
+
+const linkResolver = (doc) => "Dummy link";

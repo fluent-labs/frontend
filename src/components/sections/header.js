@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import Img from "gatsby-image";
+import styled from "styled-components";
 
 import { Container } from "../global";
 
@@ -15,6 +15,18 @@ const Header = () => {
           }
         }
       }
+      prismicHomePage {
+        data {
+          header_subtitle
+          header_title_one
+          header_title_two
+          header_title_three
+          header_input_placeholder
+          header_button_text
+          header_form_subtitle
+          header_form_subtitle_link_text
+        }
+      }
     }
   `);
 
@@ -22,28 +34,38 @@ const Header = () => {
     event.preventDefault();
   };
 
+  const {
+    header_subtitle: headerSubtitle,
+    header_title_one: headerTitleOne,
+    header_title_two: headerTitleTwo,
+    header_title_three: headerTitleThree,
+    header_input_placeholder: headerInputPlaceholder,
+    header_button_text: headerButtonText,
+    header_form_subtitle: headerFormSubtitle,
+    header_form_subtitle_link_text: headerFormSubtitleLinkText,
+  } = data.prismicHomePage.data;
+
   return (
     <HeaderWrapper id="top">
       <Container>
         <Flex>
           <HeaderTextGroup>
-            <Subtitle>Reading without boundaries</Subtitle>
+            <Subtitle>{headerSubtitle}</Subtitle>
             <h1>
-              Read what you want,
+              {headerTitleOne}
               <br />
-              in any language
+              {headerTitleTwo}
             </h1>
-            <h2>
-              Our reading app combines the support of a textbook with the
-              freedom of the internet. Sign up to get early access.
-            </h2>
+            <h2>{headerTitleThree}</h2>
             <HeaderForm onSubmit={handleSubmit}>
-              <HeaderInput placeholder="Your email" />
-              <HeaderButton>Early access</HeaderButton>
+              <HeaderInput placeholder={headerInputPlaceholder} />
+              <HeaderButton>{headerButtonText}</HeaderButton>
             </HeaderForm>
             <FormSubtitle>
-              Already have a beta account?{" "}
-              <FormSubtitleLink to="/">Sign in</FormSubtitleLink>
+              {headerFormSubtitle}{" "}
+              <FormSubtitleLink to="/">
+                {headerFormSubtitleLinkText}
+              </FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
           <ImageWrapper>

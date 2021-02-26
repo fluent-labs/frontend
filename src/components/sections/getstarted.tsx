@@ -1,17 +1,38 @@
 import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 
 import { Container, Section } from "../global";
 
-const GetStarted = () => (
-  <StyledSection>
-    <GetStartedContainer>
-      <GetStartedTitle>Be the first to get the beta</GetStartedTitle>
-      <TryItButton>Get early access</TryItButton>
-      <Subtitle>No credit card required.</Subtitle>
-    </GetStartedContainer>
-  </StyledSection>
-);
+const GetStarted = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      prismicHomePage {
+        data {
+          get_started_title
+          try_it_button_text
+          get_started_subtitle
+        }
+      }
+    }
+  `);
+
+  const {
+    get_started_title: getStartedTitle,
+    try_it_button_text: tryItButtonText,
+    get_started_subtitle: getStartedSubtitle,
+  } = data.prismicHomePage.data;
+
+  return (
+    <StyledSection>
+      <GetStartedContainer>
+        <GetStartedTitle>{getStartedTitle}</GetStartedTitle>
+        <TryItButton>{tryItButtonText}</TryItButton>
+        <Subtitle>{getStartedSubtitle}</Subtitle>
+      </GetStartedContainer>
+    </StyledSection>
+  );
+};
 
 export default GetStarted;
 

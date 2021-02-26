@@ -1,0 +1,115 @@
+{
+  "Main": {
+    "header_subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "Header Subtitle",
+        "placeholder": "Reading without boundaries"
+      }
+    },
+    "header_title_one": {
+      "type": "Text",
+      "config": {
+        "label": "Header Title One",
+        "placeholder": "Read what you want,"
+      }
+    },
+    "header_title_two": {
+      "type": "Text",
+      "config": {
+        "label": "Header title two",
+        "placeholder": "in any language."
+      }
+    },
+    "header_title_three": {
+      "type": "Text",
+      "config": {
+        "label": "Header Title Three",
+        "placeholder": "Our reading app combines the support of a textbook with the freedom of the internet. Sign up to get early access."
+      }
+    },
+    "header_input_placeholder": {
+      "type": "Text",
+      "config": {
+        "label": "Header input placeholder",
+        "placeholder": "Your email"
+      }
+    },
+    "header_button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Header button text",
+        "placeholder": "Early Access"
+      }
+    },
+    "header_form_subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "Header form subtitle",
+        "placeholder": "Already have a beta account?"
+      }
+    },
+    "header_form_subtitle_link_text": {
+      "type": "Text",
+      "config": {
+        "label": "Header form subtitle link text",
+        "placeholder": "Sign in"
+      }
+    },
+    "benefits_subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "Benefits Subtitle",
+        "placeholder": "Benefits"
+      }
+    },
+    "benefits_section_title": {
+      "type": "Text",
+      "config": {
+        "label": "Benefits Section Title",
+        "placeholder": "A reader for the internet"
+      }
+    },
+    "benefits_entries": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "title": {
+            "type": "Text",
+            "config": {
+              "label": "Title"
+            }
+          },
+          "text": {
+            "type": "Text",
+            "config": {
+              "label": "Text"
+            }
+          }
+        },
+        "label": "Benefits Entries"
+      }
+    },
+    "get_started_title": {
+      "type": "Text",
+      "config": {
+        "label": "Get started title",
+        "placeholder": "Be the first to get the beta"
+      }
+    },
+    "try_it_button_text": {
+      "type": "Text",
+      "config": {
+        "label": "Try it button text",
+        "placeholder": "Get early access"
+      }
+    },
+    "get_started_subtitle": {
+      "type": "Text",
+      "config": {
+        "label": "Get started subtitle",
+        "placeholder": "No credit card required."
+      }
+    }
+  }
+}
