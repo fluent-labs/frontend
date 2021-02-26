@@ -2,10 +2,11 @@
   "parser": "babel-eslint",
   "extends": [
     "google",
-    "prettier",
     "eslint:recommended",
+    "plugin:jest/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
-    "plugin:jest/recommended"
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 2016,
