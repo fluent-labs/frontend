@@ -18,17 +18,17 @@ const GetStarted = () => {
   `);
 
   const {
-    get_started_title,
-    try_it_button_text,
-    get_started_subtitle,
+    get_started_title: getStartedTitle,
+    try_it_button_text: tryItButtonText,
+    get_started_subtitle: getStartedSubtitle,
   } = data.prismicHomePage.data;
 
   return (
     <StyledSection>
       <GetStartedContainer>
-        <GetStartedTitle>{get_started_title}</GetStartedTitle>
-        <TryItButton>{try_it_button_text}</TryItButton>
-        <Subtitle>{get_started_subtitle}</Subtitle>
+        <GetStartedTitle>{getStartedTitle}</GetStartedTitle>
+        <TryItButton>{tryItButtonText}</TryItButton>
+        <Subtitle>{getStartedSubtitle}</Subtitle>
       </GetStartedContainer>
     </StyledSection>
   );
