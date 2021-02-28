@@ -30,7 +30,7 @@ const Header = () => {
     }
   `);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
   };
 
