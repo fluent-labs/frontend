@@ -50,7 +50,7 @@ const Footer = () => {
           <ul>
             {footerColumnOneLinks.map((link: NavLinkProps) => {
               return (
-                <li>
+                <li key={link.title}>
                   <NavLink {...link} />
                 </li>
               );
@@ -62,7 +62,7 @@ const Footer = () => {
           <ul>
             {footerColumnTwoLinks.map((link: NavLinkProps) => {
               return (
-                <li>
+                <li key={link.title}>
                   <NavLink {...link} />
                 </li>
               );
@@ -74,7 +74,7 @@ const Footer = () => {
           <ul>
             {footerColumnThreeLinks.map((link: NavLinkProps) => {
               return (
-                <li>
+                <li key={link.title}>
                   <NavLink {...link} />
                 </li>
               );
