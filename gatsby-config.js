@@ -60,6 +60,7 @@ module.exports = {
         linkResolver: () => (doc) => linkResolver(doc),
         schemas: {
           home_page: require("./custom_types/home_page.json"),
+          navigation: require("./custom_types/navigation.json"),
         },
         lang: "*",
       },
