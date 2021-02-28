@@ -88,6 +88,9 @@ jobs:
     steps:
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v7
+        env:
+          # Needed because we didn't clone the repo
+          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
         with:
           urls: |
             https://preprod.fluentlabs.io/
