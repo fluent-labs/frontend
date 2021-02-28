@@ -15,6 +15,12 @@ import {
   ActionsContainer,
 } from "./style";
 
+interface NavLink {
+  title: string;
+  href: string;
+  external: boolean;
+}
+
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -39,14 +45,14 @@ const Navigation = () => {
     signup_text: signupText,
   } = data.prismicNavigation.data;
 
-  const handleScroll = (event) => {
+  const handleScroll = (_event: any) => {
     const scrollTop = window.pageYOffset;
     if (scrollTop > 32) {
       setHasScrolled(true);
     } else {
       setHasScrolled(false);
     }
-  }
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -55,7 +61,7 @@ const Navigation = () => {
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
-  const getNavLink = ({ title, href, external }) => {
+  const getNavLink = ({ title, href, external }: NavLink) => {
     if (external) {
       return (
         <a href={href} onClick={closeMobileMenu}>
@@ -63,22 +69,26 @@ const Navigation = () => {
         </a>
       );
     } else {
-      return (<Link to={href} onClick={closeMobileMenu}>{title}</Link>);
+      return (
+        <Link to={href} onClick={closeMobileMenu}>
+          {title}
+        </Link>
+      );
     }
-  }
+  };
 
   const getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>
       <Scrollspy
-        items={navigationLinks.map((item) => item.title.toLowerCase())}
+        items={navigationLinks.map((item: NavLink) => item.title.toLowerCase())}
         currentClassName="active"
         mobile={mobile}
         offset={-64}
-      >{navigationLinks.map((navItem) => (
-        <NavItem key={navItem.title}>
-          {getNavLink(navItem)}
-        </NavItem>
-      ))}</Scrollspy>
+      >
+        {navigationLinks.map((navItem: NavLink) => (
+          <NavItem key={navItem.title}>{getNavLink(navItem)}</NavItem>
+        ))}
+      </Scrollspy>
     </NavListWrapper>
   );
 
@@ -86,11 +96,15 @@ const Navigation = () => {
     <Nav scrolled={hasScrolled}>
       <StyledContainer>
         <Brand>
-        <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-          {getNavLink({title: "FluentLabs Reader", href: "/", external: false})}
+          <Scrollspy offset={-64} item={["top"]} currentClassName="active">
+            {getNavLink({
+              title: "FluentLabs Reader",
+              href: "/",
+              external: false,
+            })}
           </Scrollspy>
         </Brand>
-        <Mobile>
+        <Mobile hide={false}>
           <button
             onClick={toggleMobileMenu}
             style={{ color: "black", background: "none" }}
@@ -108,7 +122,7 @@ const Navigation = () => {
           <button>{signupText}</button>
         </ActionsContainer>
       </StyledContainer>
-      <Mobile>
+      <Mobile hide={false}>
         {mobileMenuOpen && (
           <MobileMenu>
             <Container>{getNavList({ mobile: true })}</Container>
@@ -117,6 +131,6 @@ const Navigation = () => {
       </Mobile>
     </Nav>
   );
-}
+};
 
 export default Navigation;
