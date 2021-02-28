@@ -10,6 +10,7 @@
     "@types/node": "^14.14.31",
     "@types/react": "^17.0.1",
     "@types/react-dom": "^17.0.0",
+    "@types/react-scrollspy": "^3.3.3",
     "@types/styled-components": "^5.1.7",
     "antd": "^4.12.3",
     "axios": "^0.21.1",
