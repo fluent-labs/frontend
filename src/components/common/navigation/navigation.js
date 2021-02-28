@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import AnchorLink from "react-anchor-link-smooth-scroll";
+import React, { useState, useEffect } from "react";
+import { graphql, useStaticQuery, Link } from "gatsby";
 import Scrollspy from "react-scrollspy";
 import { Menu, X } from "react-feather";
 
@@ -15,104 +15,108 @@ import {
   ActionsContainer,
 } from "./style";
 
-const NAV_ITEMS = [
-  ["Benefits", "#benefits"],
-  ["Demo", "/demo/"],
-  // ["Pricing", "#pricing"],
-];
+const Navigation = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
-export default class Navigation extends Component {
-  state = {
-    mobileMenuOpen: false,
-    hasScrolled: false,
-  };
+  const data = useStaticQuery(graphql`
+    query {
+      prismicNavigation {
+        data {
+          navigation_links {
+            title
+            href
+            external
+          }
+          signup_text
+        }
+      }
+    }
+  `);
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+  const {
+    navigation_links: navigationLinks,
+    signup_text: signupText,
+  } = data.prismicNavigation.data;
+
+  const handleScroll = (event) => {
+    const scrollTop = window.pageYOffset;
+    if (scrollTop > 32) {
+      setHasScrolled(true);
+    } else {
+      setHasScrolled(false);
+    }
   }
 
-  handleScroll = (event) => {
-    const scrollTop = window.pageYOffset;
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
 
-    if (scrollTop > 32) {
-      this.setState({ hasScrolled: true });
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  const getNavLink = ({ title, href, external }) => {
+    if (external) {
+      return (
+        <a href={href} onClick={closeMobileMenu}>
+          {title}
+        </a>
+      );
     } else {
-      this.setState({ hasScrolled: false });
+      return (<Link to={href} onClick={closeMobileMenu}>{title}</Link>);
     }
-  };
+  }
 
-  toggleMobileMenu = () => {
-    this.setState((prevState) => ({
-      mobileMenuOpen: !prevState.mobileMenuOpen,
-    }));
-  };
-
-  closeMobileMenu = () => {
-    if (this.state.mobileMenuOpen) {
-      this.setState({ mobileMenuOpen: false });
-    }
-  };
-
-  getNavAnchorLink = (item) => (
-    <AnchorLink href={item[1]} onClick={this.closeMobileMenu}>
-      {item[0]}
-    </AnchorLink>
-  );
-
-  getNavList = ({ mobile = false }) => (
+  const getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>
       <Scrollspy
-        items={NAV_ITEMS.map((item) => item[0].toLowerCase())}
+        items={navigationLinks.map((item) => item.title.toLowerCase())}
         currentClassName="active"
         mobile={mobile}
         offset={-64}
-      >
-        {NAV_ITEMS.map((navItem) => (
-          <NavItem key={navItem}>{this.getNavAnchorLink(navItem)}</NavItem>
-        ))}
-      </Scrollspy>
+      >{navigationLinks.map((navItem) => (
+        <NavItem key={navItem.title}>
+          {getNavLink(navItem)}
+        </NavItem>
+      ))}</Scrollspy>
     </NavListWrapper>
   );
 
-  render() {
-    const { mobileMenuOpen } = this.state;
-
-    return (
-      <Nav {...this.props} scrolled={this.state.hasScrolled}>
-        <StyledContainer>
-          <Brand>
-            <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-              <AnchorLink href="#top" onClick={this.closeMobileMenu}>
-                FluentLabs Reader
-              </AnchorLink>
-            </Scrollspy>
-          </Brand>
-          <Mobile>
-            <button
-              onClick={this.toggleMobileMenu}
-              style={{ color: "black", background: "none" }}
-            >
-              {this.state.mobileMenuOpen ? (
-                <X size={24} alt="close menu" />
-              ) : (
-                <Menu size={24} alt="open menu" />
-              )}
-            </button>
-          </Mobile>
-
-          <Mobile hide>{this.getNavList({})}</Mobile>
-          <ActionsContainer>
-            <button>Sign up</button>
-          </ActionsContainer>
-        </StyledContainer>
+  return (
+    <Nav scrolled={hasScrolled}>
+      <StyledContainer>
+        <Brand>
+        <Scrollspy offset={-64} item={["top"]} currentClassName="active">
+          {getNavLink({title: "FluentLabs Reader", href: "/", external: false})}
+          </Scrollspy>
+        </Brand>
         <Mobile>
-          {mobileMenuOpen && (
-            <MobileMenu>
-              <Container>{this.getNavList({ mobile: true })}</Container>
-            </MobileMenu>
-          )}
+          <button
+            onClick={toggleMobileMenu}
+            style={{ color: "black", background: "none" }}
+          >
+            {mobileMenuOpen ? (
+              <X size={24} alt="close menu" />
+            ) : (
+              <Menu size={24} alt="open menu" />
+            )}
+          </button>
         </Mobile>
-      </Nav>
-    );
-  }
+
+        <Mobile hide>{getNavList({})}</Mobile>
+        <ActionsContainer>
+          <button>{signupText}</button>
+        </ActionsContainer>
+      </StyledContainer>
+      <Mobile>
+        {mobileMenuOpen && (
+          <MobileMenu>
+            <Container>{getNavList({ mobile: true })}</Container>
+          </MobileMenu>
+        )}
+      </Mobile>
+    </Nav>
+  );
 }
+
+export default Navigation;
