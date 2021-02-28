@@ -59,6 +59,13 @@
             "config": {
               "label": "href"
             }
+          },
+          "external": {
+            "type": "Boolean",
+            "config": {
+              "default_value": true,
+              "label": "external"
+            }
           }
         },
         "label": "Footer column one links"
@@ -86,6 +93,13 @@
             "config": {
               "label": "href"
             }
+          },
+          "external": {
+            "type": "Boolean",
+            "config": {
+              "default_value": true,
+              "label": "external"
+            }
           }
         },
         "label": "Footer column two links"
@@ -112,6 +126,13 @@
             "type": "Text",
             "config": {
               "label": "href"
+            }
+          },
+          "external": {
+            "type": "Boolean",
+            "config": {
+              "default_value": true,
+              "label": "external"
             }
           }
         },
