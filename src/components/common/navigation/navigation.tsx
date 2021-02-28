@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { graphql, useStaticQuery, Link } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import Scrollspy from "react-scrollspy";
 import { Menu, X } from "react-feather";
 
@@ -14,12 +14,7 @@ import {
   Mobile,
   ActionsContainer,
 } from "./style";
-
-interface NavLink {
-  title: string;
-  href: string;
-  external: boolean;
-}
+import NavLink, { NavLinkProps } from "../navlink";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -61,32 +56,20 @@ const Navigation = () => {
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
-  const getNavLink = ({ title, href, external }: NavLink) => {
-    if (external) {
-      return (
-        <a href={href} onClick={closeMobileMenu}>
-          {title}
-        </a>
-      );
-    } else {
-      return (
-        <Link to={href} onClick={closeMobileMenu}>
-          {title}
-        </Link>
-      );
-    }
-  };
-
   const getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>
       <Scrollspy
-        items={navigationLinks.map((item: NavLink) => item.title.toLowerCase())}
+        items={navigationLinks.map((item: NavLinkProps) =>
+          item.title.toLowerCase()
+        )}
         currentClassName="active"
         mobile={mobile}
         offset={-64}
       >
-        {navigationLinks.map((navItem: NavLink) => (
-          <NavItem key={navItem.title}>{getNavLink(navItem)}</NavItem>
+        {navigationLinks.map((navItem: NavLinkProps) => (
+          <NavItem key={navItem.title}>
+            <NavLink onClick={closeMobileMenu} {...navItem} />
+          </NavItem>
         ))}
       </Scrollspy>
     </NavListWrapper>
@@ -97,11 +80,12 @@ const Navigation = () => {
       <StyledContainer>
         <Brand>
           <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-            {getNavLink({
-              title: "FluentLabs Reader",
-              href: "/",
-              external: false,
-            })}
+            <NavLink
+              title="FluentLabs Reader"
+              href="/"
+              external={true}
+              onClick={closeMobileMenu}
+            />
           </Scrollspy>
         </Brand>
         <Mobile hide={false}>

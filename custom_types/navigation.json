@@ -37,10 +37,10 @@
     }
   },
   "Footer": {
-    "column_one_title": {
+    "footer_column_one_title": {
       "type": "Text",
       "config": {
-        "label": "Column one title",
+        "label": "Footer column one title",
         "placeholder": "Resources"
       }
     },
@@ -55,23 +55,30 @@
             }
           },
           "href": {
-            "type": "Link",
+            "type": "Text",
             "config": {
               "label": "href"
+            }
+          },
+          "external": {
+            "type": "Boolean",
+            "config": {
+              "default_value": true,
+              "label": "external"
             }
           }
         },
         "label": "Footer column one links"
       }
     },
-    "column_two_title": {
+    "footer_column_two_title": {
       "type": "Text",
       "config": {
-        "label": "Column one title",
+        "label": "Footer column two title",
         "placeholder": "Company"
       }
     },
-    "column_two_links": {
+    "footer_column_two_links": {
       "type": "Group",
       "config": {
         "fields": {
@@ -82,19 +89,26 @@
             }
           },
           "href": {
-            "type": "Link",
+            "type": "Text",
             "config": {
               "label": "href"
+            }
+          },
+          "external": {
+            "type": "Boolean",
+            "config": {
+              "default_value": true,
+              "label": "external"
             }
           }
         },
         "label": "Footer column two links"
       }
     },
-    "column_three_title": {
+    "footer_column_three_title": {
       "type": "Text",
       "config": {
-        "label": "Column three title",
+        "label": "Footer column three title",
         "placeholder": "Social"
       }
     },
@@ -109,9 +123,16 @@
             }
           },
           "href": {
-            "type": "Link",
+            "type": "Text",
             "config": {
               "label": "href"
+            }
+          },
+          "external": {
+            "type": "Boolean",
+            "config": {
+              "default_value": true,
+              "label": "external"
             }
           }
         },
