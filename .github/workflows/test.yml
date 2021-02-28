@@ -58,7 +58,7 @@ jobs:
           aws-region: us-west-2
       
       - name: Push to S3
-        run: aws s3 sync public/ s3://preprod.foreignlanguagereader.com --no-progress --delete
+        run: aws s3 sync public/ s3://preprod.foreignlanguagereader.com --no-progress --delete --cache-control max-age=31536000
 
   deploy-fluentlabs:
     name: Deploy to preprod.fluentlabs.io
@@ -79,4 +79,4 @@ jobs:
           aws-region: us-west-2
       
       - name: Push to S3
-        run: aws s3 sync public/ s3://preprod.fluentlabs.io --no-progress --delete
+        run: aws s3 sync public/ s3://preprod.fluentlabs.io --no-progress --delete --cache-control max-age=31536000

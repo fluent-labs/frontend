@@ -38,8 +38,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `FluentLabs Reader - A reader for the internet`,
+        short_name: `FluentLabs`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -60,6 +60,7 @@ module.exports = {
         linkResolver: () => (doc) => linkResolver(doc),
         schemas: {
           home_page: require("./custom_types/home_page.json"),
+          navigation: require("./custom_types/navigation.json"),
         },
         lang: "*",
       },
