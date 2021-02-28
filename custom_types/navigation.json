@@ -55,7 +55,7 @@
             }
           },
           "href": {
-            "type": "Link",
+            "type": "Text",
             "config": {
               "label": "href"
             }
@@ -82,7 +82,7 @@
             }
           },
           "href": {
-            "type": "Link",
+            "type": "Text",
             "config": {
               "label": "href"
             }
@@ -109,7 +109,7 @@
             }
           },
           "href": {
-            "type": "Link",
+            "type": "Text",
             "config": {
               "label": "href"
             }
