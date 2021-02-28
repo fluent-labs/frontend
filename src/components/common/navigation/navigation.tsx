@@ -59,13 +59,17 @@ const Navigation = () => {
   const getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>
       <Scrollspy
-        items={navigationLinks.map((item: NavLinkProps) => item.title.toLowerCase())}
+        items={navigationLinks.map((item: NavLinkProps) =>
+          item.title.toLowerCase()
+        )}
         currentClassName="active"
         mobile={mobile}
         offset={-64}
       >
         {navigationLinks.map((navItem: NavLinkProps) => (
-          <NavItem key={navItem.title}><NavLink onClick={closeMobileMenu} {...navItem} /></NavItem>
+          <NavItem key={navItem.title}>
+            <NavLink onClick={closeMobileMenu} {...navItem} />
+          </NavItem>
         ))}
       </Scrollspy>
     </NavListWrapper>
@@ -76,7 +80,12 @@ const Navigation = () => {
       <StyledContainer>
         <Brand>
           <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-            <NavLink title="FluentLabs Reader" href="/" external={true} onClick={closeMobileMenu} />
+            <NavLink
+              title="FluentLabs Reader"
+              href="/"
+              external={true}
+              onClick={closeMobileMenu}
+            />
           </Scrollspy>
         </Brand>
         <Mobile hide={false}>

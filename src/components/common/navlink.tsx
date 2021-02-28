@@ -8,7 +8,12 @@ export interface NavLinkProps {
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 
-const NavLink = ({ title, href, external, onClick = () => {} }: NavLinkProps) => {
+const NavLink = ({
+  title,
+  href,
+  external,
+  onClick = () => {},
+}: NavLinkProps) => {
   if (external) {
     return (
       <a href={href} onClick={onClick}>
