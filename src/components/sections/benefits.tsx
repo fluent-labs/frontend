@@ -18,7 +18,7 @@ interface BenefitsPage {
 const Benefits = () => {
   const data = useStaticQuery(graphql`
     query {
-      prismicHomePage {
+      prismicHomePage(lang: { eq: "en-us" }) {
         data {
           benefits_subtitle
           benefits_section_title

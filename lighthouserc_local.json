@@ -1,7 +1,7 @@
 {
-    "ci": {
-      "collect": {
-        "staticDistDir": "./public"
-      }
+  "ci": {
+    "collect": {
+      "staticDistDir": "./public"
     }
   }
+}
