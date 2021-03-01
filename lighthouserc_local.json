@@ -1,7 +1,8 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./public"
+      "staticDistDir": "./public",
+      "autodiscoverUrlBlocklist": ["/offline-plugin-app-shell-fallback/index.html"]
     }
   }
 }
