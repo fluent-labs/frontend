@@ -22,7 +22,7 @@ const Navigation = () => {
 
   const data = useStaticQuery(graphql`
     query {
-      prismicNavigation(lang: {eq: "en-us"}) {
+      prismicNavigation(lang: { eq: "en-us" }) {
         data {
           navigation_links {
             title

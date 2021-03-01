@@ -8,7 +8,7 @@ import NavLink, { NavLinkProps } from "../common/navlink";
 const Footer = () => {
   const data = useStaticQuery(graphql`
     query {
-      prismicNavigation(lang: {eq: "en-us"}) {
+      prismicNavigation(lang: { eq: "en-us" }) {
         data {
           footer_column_one_title
           footer_column_one_links {

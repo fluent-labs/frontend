@@ -7,7 +7,7 @@ import { Container, Section } from "../global";
 const GetStarted = () => {
   const data = useStaticQuery(graphql`
     query {
-      prismicHomePage(lang: {eq: "en-us"}) {
+      prismicHomePage(lang: { eq: "en-us" }) {
         data {
           get_started_title
           try_it_button_text
