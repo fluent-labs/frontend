@@ -15,7 +15,7 @@ const Header = () => {
           }
         }
       }
-      prismicHomePage {
+      prismicHomePage(lang: {eq: "en-us"}) {
         data {
           header_subtitle
           header_title_one
