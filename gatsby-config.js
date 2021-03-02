@@ -12,27 +12,21 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-typescript`,
+
+    // SEO
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://www.fluentlabs.io`,
+        stripQueryString: true,
+      },
+    },
+
+    // CSS
     `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_ID,
-        // Puts tracking script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `product`,
-        path: `${__dirname}/src/images/product`,
-      },
-    },
+
+    // Images
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -45,6 +39,29 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`,
+      },
+    },
+
+    // Metrics
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+      },
+    },
+
+    // Data sources
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `product`,
+        path: `${__dirname}/src/images/product`,
       },
     },
     {
@@ -65,6 +82,8 @@ module.exports = {
         lang: "*",
       },
     },
+
+    // Performance
     `gatsby-plugin-offline`,
   ],
 };
