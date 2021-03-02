@@ -54,9 +54,6 @@ jobs:
 
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v7
-        env:
-          # Needed because we didn't clone the repo
-          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
         with:
           configPath: './lighthouserc_local.json'
           uploadArtifacts: true # save results as an action artifacts
@@ -94,7 +91,7 @@ jobs:
           aws-region: us-west-2
       
       - name: Push to S3
-        run: gatsby-plugin-s3 deploy --yes
+        run: npm run deploy
         env:
           DOMAIN_NAME: preprod.foreignlanguagereader.com
 
@@ -130,7 +127,7 @@ jobs:
           aws-region: us-west-2
       
       - name: Push to S3
-        run: gatsby-plugin-s3 deploy --yes
+        run: npm run deploy
         env:
           DOMAIN_NAME: preprod.fluentlabs.io
 
