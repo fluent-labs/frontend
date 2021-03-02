@@ -78,11 +78,11 @@ jobs:
         env:
           CI: true
 
-      - uses: actions/download-artifact@master
-        name: Download website content
-        with:
-          name: gatsby-public
-          path: public
+      - name: Create build
+        run: npm run build
+        env:
+          CI: true
+          DOMAIN_NAME: preprod.fluentlabs.io
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
