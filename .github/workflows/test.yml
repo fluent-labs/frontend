@@ -78,6 +78,8 @@ jobs:
         env:
           CI: true
 
+      # The S3 bucket name is saved in .cache/s3.config.json
+      # It's probably simpler to just rebuild than mess with the cache.
       - name: Create build
         run: npm run build
         env:
