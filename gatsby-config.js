@@ -92,11 +92,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-          bucketName: siteDomainName,
-          protocol: "https",
-          hostname: siteDomainName,
+        bucketName: siteDomainName,
+        protocol: "https",
+        hostname: siteDomainName,
       },
-    }
+    },
   ],
 };
 
