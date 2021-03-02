@@ -32,6 +32,7 @@ jobs:
       run: npm run build
       env:
         CI: true
+        DOMAIN_NAME: preprod.fluentlabs.io
     
     - uses: actions/upload-artifact@master
       name: Upload website content
@@ -58,44 +59,8 @@ jobs:
           configPath: './lighthouserc_local.json'
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true # upload lighthouse report to the temporary storage
-  
-  deploy-foreign-language-reader:
-    name: Deploy to preprod.foreignlanguagereader.com
-    needs: [build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.3.4
 
-      - uses: actions/setup-node@v2.1.5
-        name: Install node 12
-        with:
-          node-version: '12.x'
-
-      - name: Install dependencies
-        run: |
-          npm ci
-        env:
-          CI: true
-
-      - uses: actions/download-artifact@master
-        name: Download website content
-        with:
-          name: gatsby-public
-          path: public
-      
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
-      
-      - name: Push to S3
-        run: npm run deploy
-        env:
-          DOMAIN_NAME: preprod.foreignlanguagereader.com
-
-  deploy-fluentlabs:
+  deploy:
     name: Deploy to preprod.fluentlabs.io
     needs: [build]
     runs-on: ubuntu-latest
@@ -132,8 +97,8 @@ jobs:
           DOMAIN_NAME: preprod.fluentlabs.io
 
   lighthouse-audit-fluentlabs:
-    name: Audit Fluentlabs preprod with lighthouse
-    needs: [deploy-fluentlabs]
+    name: Audit Preprod with lighthouse
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - name: Audit URLs using Lighthouse
