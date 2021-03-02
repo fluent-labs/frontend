@@ -4,6 +4,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+const siteDomainName = process.env.DOMAIN_NAME;
+
 module.exports = {
   siteMetadata: {
     title: `FluentLabs Reader`,
@@ -85,6 +87,16 @@ module.exports = {
 
     // Performance
     `gatsby-plugin-offline`,
+
+    // Deployment
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: siteDomainName,
+          protocol: "https",
+          hostname: siteDomainName,
+      },
+    }
   ],
 };
 
