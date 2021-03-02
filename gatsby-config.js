@@ -4,7 +4,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const siteDomainName = process.env.DOMAIN_NAME;
+// It is better to fail loudly than default to deploying to prod.
+const siteDomainName = process.env.DOMAIN_NAME || "localhost";
 
 module.exports = {
   siteMetadata: {
