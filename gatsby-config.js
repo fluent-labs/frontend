@@ -4,6 +4,9 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+// It is better to fail loudly than default to deploying to prod.
+const siteDomainName = process.env.DOMAIN_NAME || "localhost";
+
 module.exports = {
   siteMetadata: {
     title: `FluentLabs Reader`,
@@ -85,6 +88,16 @@ module.exports = {
 
     // Performance
     `gatsby-plugin-offline`,
+
+    // Deployment
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: siteDomainName,
+        protocol: "https",
+        hostname: siteDomainName,
+      },
+    },
   ],
 };
 

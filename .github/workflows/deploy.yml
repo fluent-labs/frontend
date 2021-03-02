@@ -27,51 +27,16 @@ jobs:
       run: npm run build
       env:
         CI: true
+        DOMAIN_NAME: www.fluentlabs.io
     
-    - uses: actions/upload-artifact@master
-      name: Upload website content
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        name: gatsby-public
-        path: public
-  
-  deploy-foreign-language-reader:
-    name: Deploy to www.foreignlanguagereader.com
-    needs: [build-frontend]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@master
-        name: Download website content
-        with:
-          name: gatsby-public
-          path: public
-      
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
-      
-      - name: Push to S3
-        run: aws s3 sync public/ s3://www.foreignlanguagereader.com --no-progress --delete --cache-control max-age=31536000
-
-  deploy-fluentlabs:
-    name: Deploy to www.fluentlabs.io
-    needs: [build-frontend]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@master
-        name: Download website content
-        with:
-          name: gatsby-public
-          path: public
-      
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
-      
-      - name: Push to S3
-        run: aws s3 sync public/ s3://www.fluentlabs.io --no-progress --delete --cache-control max-age=31536000
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+    
+    - name: Push to S3
+      run: npm run deploy
+      env:
+        DOMAIN_NAME: www.fluentlabs.io # Probably doesn't do anything
