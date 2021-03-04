@@ -59,7 +59,7 @@ jobs:
       run: npm run lint-ci
 
     - name: End to end tests
-      run: npm run est:e2e
+      run: npm run test:e2e
   
   lighthouse-audit-local:
     name: Audit local build with lighthouse
