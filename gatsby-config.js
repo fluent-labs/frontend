@@ -98,6 +98,16 @@ module.exports = {
         hostname: siteDomainName,
       },
     },
+
+    // Localization
+    {
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyDefault: "en-us",
+        prefixDefault: false,
+        useLangKeyLayout: false,
+      },
+    },
   ],
 };
 

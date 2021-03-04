@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import Scrollspy from "react-scrollspy";
 import { Menu, X } from "react-feather";
 
@@ -16,29 +15,24 @@ import {
 } from "./style";
 import NavLink, { NavLinkProps } from "../navlink";
 
-const Navigation = () => {
+interface NavigationProps {
+  translation: NavigationTextTranslation;
+  locale?: string;
+}
+
+interface NavigationTextTranslation {
+  navigation_links: Array<NavLinkProps>;
+  signup_text: string;
+}
+
+const Navigation = ({ translation, locale }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-
-  const data = useStaticQuery(graphql`
-    query {
-      prismicNavigation(lang: { eq: "en-us" }) {
-        data {
-          navigation_links {
-            title
-            href
-            external
-          }
-          signup_text
-        }
-      }
-    }
-  `);
 
   const {
     navigation_links: navigationLinks,
     signup_text: signupText,
-  } = data.prismicNavigation.data;
+  } = translation;
 
   const handleScroll = (_event: any) => {
     const scrollTop = window.pageYOffset;
@@ -68,7 +62,7 @@ const Navigation = () => {
       >
         {navigationLinks.map((navItem: NavLinkProps) => (
           <NavItem key={navItem.title}>
-            <NavLink onClick={closeMobileMenu} {...navItem} />
+            <NavLink onClick={closeMobileMenu} {...navItem} locale={locale} />
           </NavItem>
         ))}
       </Scrollspy>
@@ -83,8 +77,9 @@ const Navigation = () => {
             <NavLink
               title="FluentLabs Reader"
               href="/"
-              external={true}
+              external={false}
               onClick={closeMobileMenu}
+              locale={locale}
             />
           </Scrollspy>
         </Brand>

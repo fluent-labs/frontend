@@ -1,8 +1,11 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 
 import { Section, Container } from "../global";
+
+interface BenefitsProps {
+  translation: BenefitsPage;
+}
 
 interface Benefit {
   title: string;
@@ -15,27 +18,12 @@ interface BenefitsPage {
   benefits_entries: Array<Benefit>;
 }
 
-const Benefits = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      prismicHomePage(lang: { eq: "en-us" }) {
-        data {
-          benefits_subtitle
-          benefits_section_title
-          benefits_entries {
-            title
-            text
-          }
-        }
-      }
-    }
-  `);
-
+const Benefits = ({ translation }: BenefitsProps) => {
   const {
     benefits_subtitle: benefitsSubtitle,
     benefits_section_title: benefitsSectionTitle,
     benefits_entries: benefitsEntries,
-  }: BenefitsPage = data.prismicHomePage.data;
+  }: BenefitsPage = translation;
 
   return (
     <Section id="benefits">

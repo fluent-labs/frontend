@@ -1,38 +1,24 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 
-import { Container } from "../global";
-import NavLink, { NavLinkProps } from "../common/navlink";
+import { Container } from "../../global";
+import NavLink, { NavLinkProps } from "../navlink";
 
-const Footer = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      prismicNavigation(lang: { eq: "en-us" }) {
-        data {
-          footer_column_one_title
-          footer_column_one_links {
-            title
-            href
-            external
-          }
-          footer_column_two_title
-          footer_column_two_links {
-            title
-            href
-            external
-          }
-          footer_column_three_title
-          footer_column_three_links {
-            title
-            href
-            external
-          }
-        }
-      }
-    }
-  `);
+interface FooterProps {
+  translation: FooterTextTranslation;
+  locale?: string;
+}
 
+interface FooterTextTranslation {
+  footer_column_one_title: string;
+  footer_column_one_links: Array<NavLinkProps>;
+  footer_column_two_title: string;
+  footer_column_two_links: Array<NavLinkProps>;
+  footer_column_three_title: string;
+  footer_column_three_links: Array<NavLinkProps>;
+}
+
+const Footer = ({ translation, locale }: FooterProps) => {
   const {
     footer_column_one_title: footerColumnOneTitle,
     footer_column_one_links: footerColumnOneLinks,
@@ -40,7 +26,7 @@ const Footer = () => {
     footer_column_two_links: footerColumnTwoLinks,
     footer_column_three_title: footerColumnThreeTitle,
     footer_column_three_links: footerColumnThreeLinks,
-  } = data.prismicNavigation.data;
+  } = translation;
 
   return (
     <FooterWrapper id="footer">
@@ -51,7 +37,7 @@ const Footer = () => {
             {footerColumnOneLinks.map((link: NavLinkProps) => {
               return (
                 <li key={link.title}>
-                  <NavLink {...link} />
+                  <NavLink {...link} locale={locale} />
                 </li>
               );
             })}
@@ -63,7 +49,7 @@ const Footer = () => {
             {footerColumnTwoLinks.map((link: NavLinkProps) => {
               return (
                 <li key={link.title}>
-                  <NavLink {...link} />
+                  <NavLink {...link} locale={locale} />
                 </li>
               );
             })}
@@ -75,7 +61,7 @@ const Footer = () => {
             {footerColumnThreeLinks.map((link: NavLinkProps) => {
               return (
                 <li key={link.title}>
-                  <NavLink {...link} />
+                  <NavLink {...link} locale={locale} />
                 </li>
               );
             })}

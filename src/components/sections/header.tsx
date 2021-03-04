@@ -5,7 +5,22 @@ import styled from "styled-components";
 
 import { Container } from "../global";
 
-const Header = () => {
+interface HeaderProps {
+  translation: HeaderTextTranslation;
+}
+
+export interface HeaderTextTranslation {
+  header_subtitle: string;
+  header_title_one: string;
+  header_title_two: string;
+  header_title_three: string;
+  header_input_placeholder: string;
+  header_button_text: string;
+  header_form_subtitle: string;
+  header_form_subtitle_link_text: string;
+}
+
+const Header = ({ translation }: HeaderProps) => {
   const data = useStaticQuery(graphql`
     query {
       file(sourceInstanceName: { eq: "product" }, name: { eq: "green-skew" }) {
@@ -13,18 +28,6 @@ const Header = () => {
           fluid(maxWidth: 1000) {
             ...GatsbyImageSharpFluid_tracedSVG
           }
-        }
-      }
-      prismicHomePage(lang: { eq: "en-us" }) {
-        data {
-          header_subtitle
-          header_title_one
-          header_title_two
-          header_title_three
-          header_input_placeholder
-          header_button_text
-          header_form_subtitle
-          header_form_subtitle_link_text
         }
       }
     }
@@ -43,7 +46,7 @@ const Header = () => {
     header_button_text: headerButtonText,
     header_form_subtitle: headerFormSubtitle,
     header_form_subtitle_link_text: headerFormSubtitleLinkText,
-  } = data.prismicHomePage.data;
+  } = translation;
 
   return (
     <HeaderWrapper id="top">
