@@ -22,6 +22,9 @@ describe("Check the home page", function () {
     cy.injectAxe();
     cy.checkA11y(null, {
       includedImpacts: ["serious"],
+      rules: {
+        "color-contrast": { enabled: false },
+      },
     });
   });
 });
