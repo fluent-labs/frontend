@@ -96,6 +96,7 @@ module.exports = {
         bucketName: siteDomainName,
         protocol: "https",
         hostname: siteDomainName,
+        acl: null,
       },
     },
 
