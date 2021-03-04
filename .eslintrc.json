@@ -3,6 +3,7 @@
   "extends": [
     "google",
     "eslint:recommended",
+    "plugin:cypress/recommended",
     "plugin:jest/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
