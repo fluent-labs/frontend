@@ -6,6 +6,7 @@ export interface NavLinkProps {
   href: string;
   external: boolean;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
+  locale?: string;
 }
 
 const NavLink = ({
@@ -13,6 +14,7 @@ const NavLink = ({
   href,
   external,
   onClick = () => {},
+  locale = ""
 }: NavLinkProps) => {
   if (external) {
     return (
@@ -21,8 +23,11 @@ const NavLink = ({
       </a>
     );
   } else {
+    const localePrefix = (locale !== "") ? `/${locale}` : ""
+    const localHref = `${localePrefix}${href}`
+
     return (
-      <Link to={href} onClick={onClick}>
+      <Link to={localHref} onClick={onClick}>
         {title}
       </Link>
     );
