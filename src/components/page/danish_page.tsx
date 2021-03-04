@@ -59,7 +59,7 @@ const Page = ({ children, title }: PageProps) => {
       <Footer translation={data.footer.data} locale={"da-dk"} />
     </Layout>
   );
-}
+};
 
 Page.propTypes = {
   children: PropTypes.node.isRequired,

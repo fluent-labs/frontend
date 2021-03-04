@@ -101,13 +101,13 @@ module.exports = {
 
     // Localization
     {
-      resolve: 'gatsby-plugin-i18n',
-      options: {        
-        langKeyDefault: 'en-us',
+      resolve: "gatsby-plugin-i18n",
+      options: {
+        langKeyDefault: "en-us",
         prefixDefault: false,
-        useLangKeyLayout: false
-      }
-    }
+        useLangKeyLayout: false,
+      },
+    },
   ],
 };
 

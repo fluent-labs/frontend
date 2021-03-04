@@ -14,7 +14,7 @@ const NavLink = ({
   href,
   external,
   onClick = () => {},
-  locale = ""
+  locale = "",
 }: NavLinkProps) => {
   if (external) {
     return (
@@ -23,8 +23,8 @@ const NavLink = ({
       </a>
     );
   } else {
-    const localePrefix = (locale !== "") ? `/${locale}` : ""
-    const localHref = `${localePrefix}${href}`
+    const localePrefix = locale !== "" ? `/${locale}` : "";
+    const localHref = `${localePrefix}${href}`;
 
     return (
       <Link to={localHref} onClick={onClick}>
