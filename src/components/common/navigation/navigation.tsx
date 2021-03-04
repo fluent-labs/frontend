@@ -74,13 +74,15 @@ const Navigation = ({ translation, locale }: NavigationProps) => {
       <StyledContainer>
         <Brand>
           <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-            <NavLink
-              title="FluentLabs Reader"
-              href="/"
-              external={false}
-              onClick={closeMobileMenu}
-              locale={locale}
-            />
+            <li>
+              <NavLink
+                title="FluentLabs Reader"
+                href="/"
+                external={false}
+                onClick={closeMobileMenu}
+                locale={locale}
+              />
+            </li>
           </Scrollspy>
         </Brand>
         <Mobile hide={false}>
