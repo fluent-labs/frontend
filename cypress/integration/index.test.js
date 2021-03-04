@@ -15,4 +15,3 @@ describe("Check the home page", function () {
     cy.get("button").should("contain", "Get early access");
   });
 });
-  
