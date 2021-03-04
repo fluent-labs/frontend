@@ -1,27 +1,24 @@
 import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import styled from "styled-components";
 
 import { Container, Section } from "../global";
 
-const GetStarted = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      prismicHomePage(lang: { eq: "en-us" }) {
-        data {
-          get_started_title
-          try_it_button_text
-          get_started_subtitle
-        }
-      }
-    }
-  `);
+interface GetStartedProps {
+  translation: GetStartedTextTranslation;
+}
 
+interface GetStartedTextTranslation {
+  get_started_title: string;
+  try_it_button_text: string;
+  get_started_subtitle: string;
+}
+
+const GetStarted = ({ translation }: GetStartedProps) => {
   const {
     get_started_title: getStartedTitle,
     try_it_button_text: tryItButtonText,
     get_started_subtitle: getStartedSubtitle,
-  } = data.prismicHomePage.data;
+  } = translation;
 
   return (
     <StyledSection>
