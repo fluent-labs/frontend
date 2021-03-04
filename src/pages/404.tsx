@@ -1,6 +1,6 @@
 import React from "react";
 
-import Page from "../components/common/page";
+import Page from "../components/page/english_page";
 import NotFound from "../components/sections/notfound";
 
 const NotFoundPage = () => (
