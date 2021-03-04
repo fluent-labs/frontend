@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: Build and test frontend
+    name: Create test production build
     runs-on: ubuntu-latest
 
     steps:
@@ -25,9 +25,6 @@ jobs:
     - name: Validate security of dependencies
       run: npx audit-ci --high
 
-    - name: Lint
-      run: npm run lint-ci
-
     - name: Create build
       run: npm run build
       env:
@@ -39,78 +36,102 @@ jobs:
       with:
         name: gatsby-public
         path: public
+
+  test:
+    name: Lint and test frontend
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.3.4
+
+    - uses: actions/setup-node@v2.1.5
+      name: Install node 12
+      with:
+        node-version: '12.x'
+
+    - name: Install dependencies
+      run: |
+        npm ci
+      env:
+        CI: true
+
+    - name: Lint
+      run: npm run lint-ci
+
+    - name: End to end tests
+      run: npm run test:e2e
   
   lighthouse-audit-local:
     name: Audit local build with lighthouse
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+    - uses: actions/checkout@v2.3.4
 
-      - uses: actions/download-artifact@master
-        name: Download website content
-        with:
-          name: gatsby-public
-          path: public
+    - uses: actions/download-artifact@master
+      name: Download website content
+      with:
+        name: gatsby-public
+        path: public
 
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v7
-        with:
-          configPath: './lighthouserc_local.json'
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+    - name: Audit URLs using Lighthouse
+      uses: treosh/lighthouse-ci-action@v7
+      with:
+        configPath: './lighthouserc_local.json'
+        uploadArtifacts: true # save results as an action artifacts
+        temporaryPublicStorage: true # upload lighthouse report to the temporary storage
 
   deploy:
     name: Deploy to preprod.fluentlabs.io
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+    - uses: actions/checkout@v2.3.4
 
-      - uses: actions/setup-node@v2.1.5
-        name: Install node 12
-        with:
-          node-version: '12.x'
+    - uses: actions/setup-node@v2.1.5
+      name: Install node 12
+      with:
+        node-version: '12.x'
 
-      - name: Install dependencies
-        run: |
-          npm ci
-        env:
-          CI: true
+    - name: Install dependencies
+      run: |
+        npm ci
+      env:
+        CI: true
 
-      # The S3 bucket name is saved in .cache/s3.config.json
-      # It's probably simpler to just rebuild than mess with the cache.
-      - name: Create build
-        run: npm run build
-        env:
-          CI: true
-          DOMAIN_NAME: preprod.fluentlabs.io
-      
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
-      
-      - name: Push to S3
-        run: npm run deploy
-        env:
-          DOMAIN_NAME: preprod.fluentlabs.io
+    # The S3 bucket name is saved in .cache/s3.config.json
+    # It's probably simpler to just rebuild than mess with the cache.
+    - name: Create build
+      run: npm run build
+      env:
+        CI: true
+        DOMAIN_NAME: preprod.fluentlabs.io
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-west-2
+    
+    - name: Push to S3
+      run: npm run deploy
+      env:
+        DOMAIN_NAME: preprod.fluentlabs.io
 
   lighthouse-audit-fluentlabs:
     name: Audit Preprod with lighthouse
     needs: [deploy]
     runs-on: ubuntu-latest
     steps:
-      - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v7
-        env:
-          # Needed because we didn't clone the repo
-          LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
-        with:
-          urls: |
-            https://preprod.fluentlabs.io/
-          # budgetPath: ./budget.json # test performance budgets
-          uploadArtifacts: true # save results as an action artifacts
-          temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+    - name: Audit URLs using Lighthouse
+      uses: treosh/lighthouse-ci-action@v7
+      env:
+        # Needed because we didn't clone the repo
+        LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
+      with:
+        urls: |
+          https://preprod.fluentlabs.io/
+        # budgetPath: ./budget.json # test performance budgets
+        uploadArtifacts: true # save results as an action artifacts
+        temporaryPublicStorage: true # upload lighthouse report to the temporary storage
