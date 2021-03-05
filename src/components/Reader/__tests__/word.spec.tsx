@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import { Word } from "../word";
+import { Word } from "../Word";
 
 describe("Word", () => {
   it("renders correctly", () => {
