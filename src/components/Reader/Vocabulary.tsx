@@ -4,7 +4,7 @@ import { Typography } from "antd";
 
 import { WordDTO } from "../../client/api/ApiClient";
 import { DefinitionsStore } from "../../model/DefinitionsStore";
-import { Word } from "./Word";
+import { Word } from "./word";
 
 const { Paragraph } = Typography;
 
