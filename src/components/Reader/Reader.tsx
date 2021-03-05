@@ -4,8 +4,8 @@ import { Divider } from "antd";
 
 import { ApiClient, WordDTO } from "../../client/api/ApiClient";
 import { DefinitionsStore } from "../../model/DefinitionsStore";
-import LanguageInput from "./LanguageInput";
-import { Vocabulary } from "./Vocabulary";
+import LanguageInput from "./language_input";
+import { Vocabulary } from "./vocabulary";
 
 const emptyArray: WordDTO[] = [];
 
