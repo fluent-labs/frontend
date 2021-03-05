@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Word renders correctly 1`] = `
+Array [
+  <span
+    className="ant-typography ant-typography-success"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    style={
+      Object {
+        "WebkitLineClamp": undefined,
+      }
+    }
+  >
+    <u>
+      test
+    </u>
+  </span>,
+  <span
+    className="ant-typography"
+    style={
+      Object {
+        "WebkitLineClamp": undefined,
+      }
+    }
+  >
+     
+  </span>,
+]
+`;
