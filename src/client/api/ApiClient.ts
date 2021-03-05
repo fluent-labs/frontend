@@ -23,7 +23,7 @@ export class ApiClient {
   hostname =
     window.location.hostname === "localhost"
       ? "http://localhost:9000"
-      : "https://api.foreignlanguagereader.com";
+      : "https://api.fluentlabs.io";
 
   getDefinition = async (
     language: string,
