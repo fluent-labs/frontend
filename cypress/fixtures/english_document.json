@@ -1,0 +1,149 @@
+[
+  {
+    "token": "This",
+    "processedToken": "this",
+    "tag": "Determiner",
+    "lemma": "this",
+    "definitions": []
+  },
+  {
+    "token": "is",
+    "processedToken": "is",
+    "tag": "Auxiliary",
+    "lemma": "be",
+    "definitions": []
+  },
+  {
+    "token": "a",
+    "processedToken": "a",
+    "tag": "Determiner",
+    "lemma": "a",
+    "definitions": []
+  },
+  {
+    "token": "fairly",
+    "processedToken": "fairly",
+    "tag": "Adverb",
+    "lemma": "fairly",
+    "definitions": []
+  },
+  {
+    "token": "complex",
+    "processedToken": "complex",
+    "tag": "Adjective",
+    "lemma": "complex",
+    "definitions": []
+  },
+  {
+    "token": "test",
+    "processedToken": "test",
+    "tag": "Noun",
+    "lemma": "test",
+    "definitions": []
+  },
+  {
+    "token": "and",
+    "processedToken": "and",
+    "tag": "CoordinatingConjunction",
+    "lemma": "and",
+    "definitions": []
+  },
+  {
+    "token": "we",
+    "processedToken": "we",
+    "tag": "Pronoun",
+    "lemma": "-PRON-",
+    "definitions": []
+  },
+  {
+    "token": "should",
+    "processedToken": "should",
+    "tag": "Verb",
+    "lemma": "should",
+    "definitions": []
+  },
+  {
+    "token": "definitely",
+    "processedToken": "definitely",
+    "tag": "Adverb",
+    "lemma": "definitely",
+    "definitions": []
+  },
+  {
+    "token": "make",
+    "processedToken": "make",
+    "tag": "Verb",
+    "lemma": "make",
+    "definitions": []
+  },
+  {
+    "token": "sure",
+    "processedToken": "sure",
+    "tag": "Adjective",
+    "lemma": "sure",
+    "definitions": []
+  },
+  {
+    "token": "it",
+    "processedToken": "it",
+    "tag": "Pronoun",
+    "lemma": "-PRON-",
+    "definitions": []
+  },
+  {
+    "token": "works",
+    "processedToken": "works",
+    "tag": "Verb",
+    "lemma": "work",
+    "definitions": []
+  },
+  {
+    "token": "There",
+    "processedToken": "there",
+    "tag": "Pronoun",
+    "lemma": "there",
+    "definitions": []
+  },
+  {
+    "token": "are",
+    "processedToken": "are",
+    "tag": "Auxiliary",
+    "lemma": "be",
+    "definitions": []
+  },
+  {
+    "token": "many",
+    "processedToken": "many",
+    "tag": "Adjective",
+    "lemma": "many",
+    "definitions": []
+  },
+  {
+    "token": "interactions",
+    "processedToken": "interactions",
+    "tag": "Noun",
+    "lemma": "interaction",
+    "definitions": []
+  },
+  {
+    "token": "here",
+    "processedToken": "here",
+    "tag": "Adverb",
+    "lemma": "here",
+    "definitions": []
+  },
+  {
+    "token": "testing",
+    "processedToken": "testing",
+    "tag": "Noun",
+    "lemma": "testing",
+    "definitions": []
+  },
+  {
+    "token": "vital",
+    "processedToken": "vital",
+    "tag": "Adjective",
+    "lemma": "vital",
+    "definitions": []
+  }
+]

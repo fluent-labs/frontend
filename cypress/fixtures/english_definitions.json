@@ -1,0 +1,437 @@
+{
+  "test": [
+    {
+      "id": "ENGLISH:test:ˈtɛst:Unknown",
+      "subdefinitions": [
+        "a set of questions or problems that are designed to measure a person's knowledge, skills, or abilities",
+        "{dx}see also {dxt|intelligence test||} {dxt|rorschach test||} {dxt|screen test||}{/dx}",
+        "a careful study of a part of the body or of a substance taken from the body",
+        "{dx}see also {dxt|blood test||} {dxt|breath test||} {dxt|stress test||}{/dx}",
+        "a careful study of a small amount of water, soil, air, etc., in order to see if its quality is good, to find out if it contains a dangerous substance, etc.",
+        "a planned and usually controlled act or series of acts that is done to learn something, to see if something works properly, etc.",
+        "{dx}see also {dxt|road test||}{/dx}",
+        "something (such as a difficult situation or task) that shows how strong or skilled someone or something is",
+        "{dx}see also {dxt|acid test||} {dxt|litmus test||}{/dx}",
+        "{sx|test match||}"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "She is studying for her math/spelling/history *test*.",
+        "I passed/failed/flunked my biology *test*.",
+        "The teacher sat at his desk grading *tests*.",
+        "a driver's/driving *test*",
+        "an IQ *test*",
+        "*test* questions",
+        "The *test* will be on the first three chapters of the book.",
+        "We {phrase}took/had a test{/phrase} on European capitals. = (*Brit*) We {phrase}did a test{/phrase} on European capitals.",
+        "The college relies on {phrase}test scores{/phrase} in its admissions process.",
+        "The *test* showed/revealed a problem with your liver function.",
+        "a vision/hearing *test*",
+        "a urine *test*",
+        "allergy *tests*",
+        "All applicants must pass a {phrase}drug test{/phrase}.",
+        "The doctor will call you with the {phrase}test results{/phrase}.",
+        "They went to the drug store to buy a {phrase}pregnancy test{/phrase}.",
+        "a {phrase}DNA test{/phrase}",
+        "The *test* indicated high levels of lead in the soil.",
+        "routine water *tests*",
+        "lab/laboratory *tests*",
+        "underground nuclear *tests*",
+        "a *test* of a new vaccine",
+        "{phrase}Taste tests{/phrase} revealed that people prefer this brand of cola over that one.",
+        "a *test* of will/strength/character",
+        "The real/true *test* of your ability as a skier is whether you can ski well on very hard snow."
+      ]
+    },
+    {
+      "id": "ENGLISH:test:ˈtɛst:Unknown",
+      "subdefinitions": [
+        "to use a set of questions or problems to measure someone's skills, knowledge, or abilities",
+        "to examine a part of the body or a substance taken from the body",
+        "to examine a small amount of water, soil, air, etc., in order to see if its quality is good, if it contains a dangerous substance, etc.",
+        "to use (something) in a planned and usually controlled way in order to see if it works properly",
+        "{dx}see also {dxt|field-test||}{/dx}",
+        "to show how strong, good, etc., someone or something is in a difficult situation",
+        "{dx}see also {dxt|time-tested||}{/dx}"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "Weekly quizzes will *test* your understanding of the material.",
+        "The students will all be *tested* again at the end of the school year.",
+        "The school nurse will be *testing* students' hearing next week.",
+        "The athletes knew that tournament officials would be *testing for* (the presence of) illegal drugs.",
+        "She {phrase}tested positive/negative{/phrase} *for* AIDS.",
+        "The water gets *tested* regularly.",
+        "Only one of the vehicles they *tested* performed well in wet conditions.",
+        "Researchers are currently *testing* (the safety of) the vaccine.",
+        "The vaccine has not been *tested* on humans yet.",
+        "We designed a series of experiments to *test* our hypothesis.",
+        "The stress is *testing* the strength of our relationship.",
+        "The scandal is *testing* the country's faith in its leadership.",
+        "Life's ordeals *test* us.",
+        "You're *testing* my patience."
+      ]
+    }
+  ],
+  "works": [],
+  "this": [],
+  "are": [
+    {
+      "id": "ENGLISH:are::Unknown",
+      "subdefinitions": ["{dx}see {dxt|be||}{/dx}"],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": []
+    }
+  ],
+  "is": [
+    {
+      "id": "ENGLISH:is::Unknown",
+      "subdefinitions": ["{dx}see {dxt|be||}{/dx}"],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": []
+    }
+  ],
+  "fairly": [
+    {
+      "id": "ENGLISH:fairly:ˈfeɚli:Unknown",
+      "subdefinitions": [
+        "to some degree or extent but not very or extremely to a reasonable or moderate extent",
+        "in a way that is right or proper in a fair way",
+        "in a favorable or pleasing way"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "a *fairly* easy job",
+        "It's still *fairly* early.",
+        "a *fairly* simple procedure",
+        "It's a *fairly* common disease.",
+        "She treats everyone *fairly*.",
+        "I told the story as *fairly* as possible.",
+        "He reports *fairly* on the issues.",
+        "He beat me {phrase}fairly and squarely{/phrase}.",
+        "a town *fairly* situated on a hill"
+      ]
+    }
+  ],
+  "sure": [
+    {
+      "id": "ENGLISH:sure:ˈʃɚ:Unknown",
+      "subdefinitions": [
+        "not having any doubt about something convinced or certain",
+        "not allowing any doubt or possibility of failure",
+        "{dx}see also {dxt|sure thing||(below)}{/dx}",
+        "known to be true or correct",
+        "firm or solid",
+        "calm, steady, and confident"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "I am *sure* (that) everything will be fine.",
+        "We are quite/completely *sure* (that) we will be finished on time.",
+        "She's not *sure* who will be there.",
+        "Are you *sure* you want to go?",
+        "Are you *sure* about that?",
+        "She'll be there, I'm *sure* of it.",
+        "Are you *sure* of the results?",
+        "The return of the robins is a *sure* sign of spring.",
+        "The letter is a *sure* indication that she cares.",
+        "Pizza is a *sure* crowd pleaser.",
+        "The *surest* way to lose weight is with diet and exercise.",
+        "One *sure* way to improve your health is to stop smoking.",
+        "He's a {phrase}sure bet{/phrase} to receive the award.",
+        "It's a {phrase}sure thing{/phrase} that they'll win.",
+        "Flowers and chocolates are always *sure things* , but consider giving your wife something different this year.",
+        "What is *sure* is that they have a problem, and we have the means to fix it.",
+        "Nothing else is *sure*.",
+        "{phrase}One thing is (for) sure{/phrase}, we'll never eat there again.",
+        "a *sure* hold/grip",
+        "a hiking boot that provides *sure* footing",
+        "the *sure* hands of a surgeon"
+      ]
+    },
+    {
+      "id": "ENGLISH:sure:ˈʃɚ:Unknown",
+      "subdefinitions": [
+        "—used to say \"yes\" or to agree to a request or suggestion",
+        "—used to disagree with a negative statement or suggestion",
+        "—used to emphasize that you agree with the first part of the statement that you are about to make"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": []
+    }
+  ],
+  "interactions": [],
+  "it": [],
+  "a": [],
+  "testing": [
+    {
+      "id": "ENGLISH:testing:ˈtɛstɪŋ:Unknown",
+      "subdefinitions": ["difficult to deal with"],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": ["It's been a *testing* time for all of us."]
+    }
+  ],
+  "here": [
+    {
+      "id": "ENGLISH:here:ˈhiɚ:Unknown",
+      "subdefinitions": [
+        "in this place at this location",
+        "to or into this place",
+        "at this point in a process, activity, story, etc.",
+        "in the matter that is being considered in this case",
+        "appearing or happening now"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "I like it *here*.",
+        "I'm *here* to help you.",
+        "Turn *here*.",
+        "Hello—is anyone *here*?",
+        "I'm sure I left my glasses (right) *here*.",
+        "They have lived *here* for 30 years.",
+        "Please sign *here*.",
+        "At last we're *here*! = *Here* we are at last!",
+        "\"Hey, where are you?\" \"I'm {phrase}over/out/down/up/in here{/phrase}.\"",
+        "I'm planning to be {phrase}back here{/phrase} by 6:00.",
+        "Come *here*.",
+        "I've come *here* to help you.",
+        "Bring the book *here*.",
+        "He rode his bicycle *here* this morning.",
+        "When will you get *here*?",
+        "*Here* comes the bus.",
+        "*Here* the author introduces a new character.",
+        "The speaker paused *here* for a moment.",
+        "*Here* the film changes from black-and-white to color.",
+        "*Here* we agree.",
+        "The essential conflict *here* is their different ways of cutting costs.",
+        "*Here*'s your chance for a new career.",
+        "Winter is *here* at last."
+      ]
+    },
+    {
+      "id": "ENGLISH:here:ˈhiɚ:Unknown",
+      "subdefinitions": [
+        "—used to say that you are present",
+        "—used for emphasis or to attract someone's attention",
+        "—used in calling a pet to you"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": []
+    },
+    {
+      "id": "ENGLISH:here:ˈhiɚ:Unknown",
+      "subdefinitions": ["this place", "this point"],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "get away {phrase}from here{/phrase}",
+        "I've done my part. {phrase}You take it from here{/phrase}."
+      ]
+    }
+  ],
+  "there": [
+    {
+      "id": "ENGLISH:there:ˈðeɚ:Unknown",
+      "subdefinitions": [
+        "in that place at that location",
+        "to or into that place",
+        "at that point in a process, activity, story, etc.",
+        "in that particular matter"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "Put the package *there* on the table.",
+        "Go to your room and stay *there*.",
+        "Turn *there* at the church.",
+        "She was sitting *there* a minute ago.",
+        "Hello. Is Pat *there*?",
+        "They have lived *there* for 30 years.",
+        "When will you be *there*?",
+        "Please stand over *there*.",
+        "I used to live near/around *there*.",
+        "What do you see out/down/up/in *there*?",
+        "At last we're *there*!",
+        "The opportunity to score was *there* , so I took the shot.",
+        "If we leave now, we should get *there* by noon.",
+        "I drove the kids *there*.",
+        "He drove *there* and back in one day.",
+        "Can we walk *there*?",
+        "We go *there* every year.",
+        "Stop right *there*, before you say something you'll regret.",
+        "*There* the story takes a surprising turn.",
+        "*There* was your chance to ask her out on a date.",
+        "*There* is where I disagree with you."
+      ]
+    },
+    {
+      "id": "ENGLISH:there:ˈðeɚ:Unknown",
+      "subdefinitions": ["capable of being relied on for support or help"],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "My dad has always been *there* for me.",
+        "She is *there* to answer any questions you might have."
+      ]
+    },
+    {
+      "id": "ENGLISH:there:ˈðeɚ:Unknown",
+      "subdefinitions": [
+        "—used to attract attention",
+        "—used to show satisfaction, approval, or encouragement"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": []
+    },
+    {
+      "id": "ENGLISH:there:ˈðeɚ:Unknown",
+      "subdefinitions": ["that place", "that point"],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "Get away {phrase}from there{/phrase}.",
+        "I'll get everything ready, and you {phrase}take it from there{/phrase}."
+      ]
+    }
+  ],
+  "vital": [
+    {
+      "id": "ENGLISH:vital:ˈvaɪtl̟:Unknown",
+      "subdefinitions": [
+        "extremely important {sx|crucial||}",
+        "needed by your body in order to keep living",
+        "{dx}see also {dxt|vital signs||}{/dx}",
+        "very lively or energetic"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "These matters are *vital* to national defense.",
+        "He played a *vital* role in guiding the project.",
+        "The sciences are a *vital* part of the school curriculum.",
+        "{phrase}It is vital{/phrase} that you follow all safety procedures. = It is {phrase}of vital importance{/phrase} that you follow all safety procedures.",
+        "your heart, lungs, and other *vital* organs",
+        "Exercise keeps her young and *vital*.",
+        "Their music still seems fresh and *vital* after all these years."
+      ]
+    }
+  ],
+  "should": [
+    {
+      "id": "ENGLISH:should:ˈʃʊd:Unknown",
+      "subdefinitions": [
+        "—used to say or suggest that something is the proper, reasonable, or best thing to do",
+        "—used with have to say that something was the proper, reasonable, or best thing to do but was not done",
+        "—used with have to say that you wish someone had seen, heard, or experienced something"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": []
+    }
+  ],
+  "make": [],
+  "many": [
+    {
+      "id": "ENGLISH:many:ˈmɛni:Unknown",
+      "subdefinitions": [
+        "—used to refer to a large number of things or people —often used in negative statements"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": []
+    },
+    {
+      "id": "ENGLISH:many:ˈmɛni:Unknown",
+      "subdefinitions": ["a large number of people or things"],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "Some people will come, but *many* will not.",
+        "The medicine has helped *many* with the disease.",
+        "*Many* of his friends never went to college.",
+        "I know some of the people here, but not (very) *many* of them.",
+        "Far/All too *many* have died in this war.",
+        "A lot of people have tried to climb the mountain, but a {phrase}great/good many{/phrase} of them have failed.",
+        "I wanted a dozen, but they didn't have {phrase}that many{/phrase}. = They didn't have {phrase}as many as that{/phrase}."
+      ]
+    }
+  ],
+  "we": [
+    {
+      "id": "ENGLISH:we:ˈwiː:Unknown",
+      "subdefinitions": [
+        "{dx}compare {dxt|i||}{/dx}",
+        "{dx}see also {it}the royal \"we\"{/it} at {dxt|royal:1||}{/dx}",
+        "people in general",
+        "{sx|you||}"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": ["*We* must learn to forgive those who hurt us."]
+    }
+  ],
+  "and": [],
+  "definitely": [
+    {
+      "id": "ENGLISH:definitely:ˈdɛfənɪtli:Unknown",
+      "subdefinitions": ["without doubt in a way that is certain or clear"],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "The new model is *definitely* an improvement.",
+        "The party will *definitely* be next week.",
+        "The room is *definitely* not ready.",
+        "\"Will you come over on Saturday?\" \"*Definitely*!\""
+      ]
+    }
+  ],
+  "complex": [
+    {
+      "id": "ENGLISH:complex:kɑmˈplɛks:Unknown",
+      "subdefinitions": [
+        "having parts that connect or go together in complicated ways",
+        "not easy to understand or explain not simple",
+        "consisting of a main clause and one or more additional clauses"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "a *complex* system",
+        "The house's wiring is *complex*.",
+        "a *complex* problem",
+        "The situation is more *complex* than you realize.",
+        "Her poetry is too *complex* for my taste.",
+        "a *complex* sentence"
+      ]
+    },
+    {
+      "id": "ENGLISH:complex:ˈkɑːmˌplɛks:Unknown",
+      "subdefinitions": [
+        "a group of buildings, apartments, etc., that are located near each other and used for a particular purpose",
+        "an emotional problem that causes someone to think or worry too much about something",
+        "{dx}see also {dxt|inferiority complex||} {dxt|oedipus complex||}{/dx}",
+        "a group of things that are connected in complicated ways"
+      ],
+      "tag": "UNKNOWN",
+      "source": "MIRRIAM_WEBSTER_LEARNERS",
+      "examples": [
+        "a sports *complex*",
+        "an industrial/apartment *complex*",
+        "She has a *complex* about her appearance.",
+        "a *complex* of welfare programs",
+        "a *complex* of protein molecules"
+      ]
+    }
+  ]
+}

@@ -28,6 +28,7 @@ class LanguageInput extends Component<LanguageInputProps> {
     return (
       <React.Fragment>
         <TextArea
+          id="languageinput"
           placeholder="Enter some text that you would like to read"
           name="text"
           onChange={(e) => this.setState({ text: e.target.value })}
@@ -46,6 +47,7 @@ class LanguageInput extends Component<LanguageInputProps> {
           <Radio.Button value="SPANISH">Spanish</Radio.Button>
         </Radio.Group>
         <Button
+          id="submittextbutton"
           type="primary"
           shape="round"
           onClick={(e) => this.handleSubmit()}
