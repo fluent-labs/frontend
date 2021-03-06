@@ -24,7 +24,7 @@ const GetStarted = ({ translation }: GetStartedProps) => {
     <StyledSection>
       <GetStartedContainer>
         <GetStartedTitle>{getStartedTitle}</GetStartedTitle>
-        <TryItButton>{tryItButtonText}</TryItButton>
+        {/* <TryItButton>{tryItButtonText}</TryItButton> */}
         <Subtitle>{getStartedSubtitle}</Subtitle>
       </GetStartedContainer>
     </StyledSection>
