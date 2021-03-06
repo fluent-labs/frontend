@@ -1,3 +1,4 @@
+/* eslint-disable camelcase, no-unused-vars */
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
