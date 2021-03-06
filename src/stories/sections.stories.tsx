@@ -1,10 +1,23 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
+import Header from "../components/sections/header";
 import Benefits from "../components/sections/benefits";
 import GetStarted from "../components/sections/getstarted";
 
 const stories = storiesOf("Home Page Sections", module);
+
+const header_translation = {
+  header_subtitle: "Read without boundaries",
+  header_title_one: "Read what you want,",
+  header_title_two: "in any language.",
+  header_title_three:
+    "Our reading app combines the support of a textbook with the freedom of the internet. Sign up to get early access.",
+  header_input_placeholder: "Your email",
+  header_button_text: "EARLY ACCESS",
+  header_form_subtitle: "Already have a beta account?",
+  header_form_subtitle_link_text: "Sign In",
+};
 
 const benefits_translation = {
   benefits_subtitle: "A reader for the internet",
@@ -35,7 +48,10 @@ const get_started_translation = {
   get_started_title: "Be the first to get the beta",
   try_it_button_text: "Get early access",
   get_started_subtitle: "No credit card required.",
-}
+};
 
+// stories.add("Header", () => <Header translation={header_translation} />);
 stories.add("Benefits", () => <Benefits translation={benefits_translation} />);
-stories.add("Get Started", () => <GetStarted translation={get_started_translation} />);
+stories.add("Get Started", () => (
+  <GetStarted translation={get_started_translation} />
+));
