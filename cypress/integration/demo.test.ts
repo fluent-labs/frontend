@@ -26,10 +26,14 @@ describe("Check the demo page page", function () {
 
     cy.wait(["@getDocument", "@getDefinitions"]);
 
-    cy.contains("span", "fairly")
-      .should("have.class", "ant-typography-success");
-    cy.contains("span", "interactions")
-      .should("have.class", "ant-typography-secondary");
+    cy.contains("span", "fairly").should(
+      "have.class",
+      "ant-typography-success"
+    );
+    cy.contains("span", "interactions").should(
+      "have.class",
+      "ant-typography-secondary"
+    );
   });
 
   it("Is fully accessible", function () {
