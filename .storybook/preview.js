@@ -1,4 +1,10 @@
+import React from "react";
 import { action } from "@storybook/addon-actions";
+import { addDecorator } from "@storybook/react";
+import { ThemeProvider } from "styled-components";
+
+import GlobalStyle from "../src/styles/GlobalStyles";
+import { theme } from "../src/styles/theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -19,3 +25,12 @@ global.__BASE_PATH__ = "/";
 window.___navigate = (pathname) => {
   action("NavigateTo:")(pathname);
 };
+
+addDecorator((story) => (
+  <ThemeProvider theme={theme}>
+    <>
+      <GlobalStyle />
+      {story()}
+    </>
+  </ThemeProvider>
+));
