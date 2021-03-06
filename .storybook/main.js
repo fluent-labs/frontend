@@ -22,7 +22,7 @@ module.exports = {
     ];
 
     // Prefer Gatsby ES6 entrypoint (module) over commonjs (main) entrypoint
-    // config.resolve.mainFields = ["browser", "module", "main"];
+    config.resolve.mainFields = ["browser", "module", "main"];
 
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
