@@ -16,7 +16,6 @@ export type WordDTO = {
   processedToken: string;
   tag: string;
   lemma: string;
-  definitions: Array<DefinitionDTO>;
 };
 
 export class ApiClient {
