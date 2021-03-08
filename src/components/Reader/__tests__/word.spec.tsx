@@ -14,7 +14,6 @@ describe("Word", () => {
             processedToken: "word",
             tag: "noun",
             lemma: "word",
-            definitions: [],
           }}
           definitions={[{ id: "test", subdefinitions: [], tag: "noun" }]}
         />
