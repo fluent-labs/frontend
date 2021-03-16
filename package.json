@@ -85,7 +85,7 @@
     "babel-loader": "^8.2.2",
     "babel-preset-gatsby": "^1.0.0",
     "babel-preset-react-app": "^10.0.0",
-    "cypress": "^6.6.0",
+    "cypress": "^6.7.1",
     "cypress-axe": "^0.12.2",
     "eslint": "^7.21.0",
     "eslint-config-google": "^0.14.0",
