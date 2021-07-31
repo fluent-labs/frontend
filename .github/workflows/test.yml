@@ -74,7 +74,7 @@ jobs:
         path: public
 
     - name: Audit URLs using Lighthouse
-      uses: treosh/lighthouse-ci-action@v7
+      uses: treosh/lighthouse-ci-action@8.0.0
       with:
         configPath: './lighthouserc_local.json'
         uploadArtifacts: true # save results as an action artifacts
@@ -124,7 +124,7 @@ jobs:
   #   runs-on: ubuntu-latest
   #   steps:
   #   - name: Audit URLs using Lighthouse
-  #     uses: treosh/lighthouse-ci-action@v7
+  #     uses: treosh/lighthouse-ci-action@8.0.0
   #     env:
   #       # Needed because we didn't clone the repo
   #       LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
