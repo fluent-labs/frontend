@@ -26,13 +26,11 @@ const benefits_translation = {
   benefits_entries: [
     {
       title: "Definitions",
-      text:
-        "See the meaning of any unfamiliar word, defined in your native language.",
+      text: "See the meaning of any unfamiliar word, defined in your native language.",
     },
     {
       title: "Vocabulary",
-      text:
-        "We remember which words you know, so you can focus on the new ones.",
+      text: "We remember which words you know, so you can focus on the new ones.",
     },
     {
       title: "Difficulty",

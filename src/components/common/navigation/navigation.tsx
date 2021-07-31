@@ -29,10 +29,7 @@ const Navigation = ({ translation, locale }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
 
-  const {
-    navigation_links: navigationLinks,
-    signup_text: signupText,
-  } = translation;
+  const { navigation_links: navigationLinks, signup_text: signupText } = translation;
 
   const handleScroll = (_event: any) => {
     const scrollTop = window.pageYOffset;
