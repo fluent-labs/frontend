@@ -49,6 +49,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
+        // Dummy tracking ID for use in CI
         trackingId: process.env.GOOGLE_ANALYTICS_ID || "UA-111111111-1",
         // Puts tracking script in the head instead of the body
         head: false,
