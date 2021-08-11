@@ -79,6 +79,7 @@ module.exports = {
         repositoryName: "fluentlabs",
         linkResolver: () => (doc) => linkResolver(doc),
         schemas: {
+          blog_post: require("./custom_types/blog_post.json"),
           home_page: require("./custom_types/home_page.json"),
           navigation: require("./custom_types/navigation.json"),
         },
