@@ -49,7 +49,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        // Dummy tracking ID for use in CI
+        trackingId: process.env.GOOGLE_ANALYTICS_ID || "UA-111111111-1",
         // Puts tracking script in the head instead of the body
         head: false,
         // Setting this parameter is optional
@@ -79,6 +80,7 @@ module.exports = {
         repositoryName: "fluentlabs",
         linkResolver: () => (doc) => linkResolver(doc),
         schemas: {
+          blog_post: require("./custom_types/blog_post.json"),
           home_page: require("./custom_types/home_page.json"),
           navigation: require("./custom_types/navigation.json"),
         },
