@@ -74,7 +74,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.15.4",
+    "@babel/core": "^7.15.5",
     "@types/cypress-axe": "^0.11.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.11",
