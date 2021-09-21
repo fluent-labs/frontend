@@ -76,7 +76,7 @@
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@types/cypress-axe": "^0.11.0",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.0.2",
     "@types/node": "^16.9.4",
     "@types/react-helmet": "^6.1.2",
     "@types/react-test-renderer": "^17.0.1",
