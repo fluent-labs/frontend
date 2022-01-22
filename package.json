@@ -39,7 +39,7 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-anchor-link-smooth-scroll": "^1.0.12",
-    "react-dom": "^16.13.1",
+    "react-dom": "^17.0.2",
     "react-feather": "^2.0.9",
     "react-helmet": "^6.1.0",
     "react-refresh": "^0.11.0",
