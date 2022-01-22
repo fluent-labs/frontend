@@ -35,14 +35,4 @@ describe("Check the demo page page", function () {
       "ant-typography-secondary"
     );
   });
-
-  it("Is fully accessible", function () {
-    cy.injectAxe();
-    cy.checkA11y(null, {
-      includedImpacts: ["serious"],
-      rules: {
-        "color-contrast": { enabled: false },
-      },
-    });
-  });
 });
