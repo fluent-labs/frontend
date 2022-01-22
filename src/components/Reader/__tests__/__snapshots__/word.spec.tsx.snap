@@ -18,6 +18,7 @@ Array [
   </span>,
   <span
     className="ant-typography"
+    onClick={null}
     style={
       Object {
         "WebkitLineClamp": undefined,
