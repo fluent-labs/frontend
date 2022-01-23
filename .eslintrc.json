@@ -3,6 +3,7 @@
   "extends": [
     "google",
     "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:cypress/recommended",
     "plugin:jest/recommended",
@@ -43,7 +44,15 @@
       { "allowShortCircuit": true, "allowTernary": true }
     ],
     "no-nested-ternary": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error", 
+      { 
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
     "prettier/prettier": ["warn"],
     "react/jsx-uses-vars": "error",
     "react/display-name": "off",

@@ -1,5 +1,4 @@
-/* eslint camelcase: "off", global-require: "off" */
-
+/* eslint camelcase: "off", global-require: "off", @typescript-eslint/no-var-requires: "off" */
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -115,4 +114,4 @@ module.exports = {
   ],
 };
 
-const linkResolver = (doc) => "Dummy link";
+const linkResolver = (_doc) => "Dummy link";
