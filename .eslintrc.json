@@ -1,8 +1,10 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "extends": [
     "google",
     "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:cypress/recommended",
     "plugin:jest/recommended",
     "plugin:jsx-a11y/recommended",
@@ -14,9 +16,10 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "requireConfigFile": false
   },
-  "plugins": ["prettier", "react", "jsx-a11y", "import", "jest"],
+  "plugins": ["prettier", "react", "jsx-a11y", "import", "jest", "@typescript-eslint"],
   "env": {
     "browser": true,
     "es6": true,
@@ -41,7 +44,15 @@
       { "allowShortCircuit": true, "allowTernary": true }
     ],
     "no-nested-ternary": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error", 
+      { 
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
     "prettier/prettier": ["warn"],
     "react/jsx-uses-vars": "error",
     "react/display-name": "off",

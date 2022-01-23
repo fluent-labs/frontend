@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/no-var-requires: "off" */
 const babelOptions = {
   presets: ["babel-preset-gatsby", "@babel/preset-typescript"],
 };
