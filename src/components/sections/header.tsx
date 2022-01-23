@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
@@ -33,7 +33,7 @@ const Header = ({ translation }: HeaderProps) => {
     }
   `);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
 
