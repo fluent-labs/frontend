@@ -16,5 +16,5 @@ describe("Check the home page", function () {
 
   it("Renders the get started", function () {
     cy.get("button").should("contain", "Få tidlig adgang");
-  })
+  });
 });
