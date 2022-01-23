@@ -1,5 +1,5 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "extends": [
     "google",
     "eslint:recommended",
@@ -14,7 +14,8 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    }
+    },
+    "requireConfigFile": false
   },
   "plugins": ["prettier", "react", "jsx-a11y", "import", "jest"],
   "env": {
