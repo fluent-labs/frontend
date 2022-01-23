@@ -8,7 +8,7 @@ import "antd/lib/radio/style/index.css";
 const { TextArea } = Input;
 
 type LanguageInputProps = {
-  onSubmit: Function;
+  onSubmit: (language: string, text: string) => void;
 };
 
 class LanguageInput extends Component<LanguageInputProps> {
@@ -50,7 +50,7 @@ class LanguageInput extends Component<LanguageInputProps> {
           id="submittextbutton"
           type="primary"
           shape="round"
-          onClick={(e) => this.handleSubmit()}
+          onClick={(_e) => this.handleSubmit()}
         >
           Submit
         </Button>

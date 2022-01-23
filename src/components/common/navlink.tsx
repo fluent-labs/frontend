@@ -13,7 +13,7 @@ const NavLink = ({
   title,
   href,
   external,
-  onClick = () => {},
+  onClick,
   locale = "",
 }: NavLinkProps) => {
   if (external) {

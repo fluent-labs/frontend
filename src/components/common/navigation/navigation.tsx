@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Event } from "react";
 import Scrollspy from "react-scrollspy";
 import { Menu, X } from "react-feather";
 
@@ -32,7 +32,7 @@ const Navigation = ({ translation, locale }: NavigationProps) => {
   const { navigation_links: navigationLinks, signup_text: signupText } =
     translation;
 
-  const handleScroll = (_event: any) => {
+  const handleScroll = (_event: Event) => {
     const scrollTop = window.pageYOffset;
     if (scrollTop > 32) {
       setHasScrolled(true);
