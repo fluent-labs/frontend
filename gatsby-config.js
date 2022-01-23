@@ -30,7 +30,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
 
     // Images
-    `gatsby-plugin-image`
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
