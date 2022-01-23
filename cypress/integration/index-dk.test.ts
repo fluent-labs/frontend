@@ -17,14 +17,4 @@ describe("Check the home page", function () {
   it("Renders the get started", function () {
     cy.get("button").should("contain", "Få tidlig adgang");
   });
-
-  it("Is fully accessible", function () {
-    cy.injectAxe();
-    cy.checkA11y(null, {
-      includedImpacts: ["serious"],
-      rules: {
-        "color-contrast": { enabled: false },
-      },
-    });
-  });
 });
