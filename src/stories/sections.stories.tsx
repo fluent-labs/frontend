@@ -49,7 +49,7 @@ const get_started_translation = {
   get_started_subtitle: "No credit card required.",
 };
 
-// stories.add("Header", () => <Header translation={header_translation} />);
+stories.add("Header", () => <Header translation={header_translation} />);
 stories.add("Benefits", () => <Benefits translation={benefits_translation} />);
 stories.add("Get Started", () => (
   <GetStarted translation={get_started_translation} />

@@ -3,10 +3,16 @@ import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 
+interface MetaProperty {
+  name: string;
+  property: string;
+  content: string;
+}
+
 interface SEOProps {
   description: string;
   lang: string;
-  meta: any;
+  meta: Array<MetaProperty>;
   title: string;
 }
 
