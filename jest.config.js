@@ -17,4 +17,7 @@ module.exports = {
     __PATH_PREFIX__: ``,
   },
   setupFiles: [`<rootDir>/loadershim.js`],
+
+  // Needed in Jest 27 since the default has changed.
+  testEnvironment: "jsdom",
 };
