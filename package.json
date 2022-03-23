@@ -27,7 +27,7 @@
     "gatsby-plugin-page-creator": "^4.10.2",
     "gatsby-plugin-react-helmet": "^5.10.0",
     "gatsby-plugin-s3": "^0.3.8",
-    "gatsby-plugin-sharp": "^4.10.1",
+    "gatsby-plugin-sharp": "^4.10.2",
     "gatsby-plugin-styled-components": "^5.10.0",
     "gatsby-plugin-typescript": "^4.9.1",
     "gatsby-plugin-web-font-loader": "^1.0.4",
