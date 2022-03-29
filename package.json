@@ -33,7 +33,7 @@
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-react-router-scroll": "^5.9.0",
     "gatsby-source-filesystem": "^4.10.1",
-    "gatsby-source-prismic": "^5.1.1",
+    "gatsby-source-prismic": "^5.2.5",
     "gatsby-transformer-sharp": "^4.10.0",
     "prismic-reactjs": "^1.3.4",
     "prop-types": "^15.8.1",
