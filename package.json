@@ -85,7 +85,7 @@
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
-    "axe-core": "^4.4.1",
+    "axe-core": "^4.4.2",
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
     "babel-preset-gatsby": "^2.14.0",
