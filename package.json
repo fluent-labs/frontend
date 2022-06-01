@@ -15,7 +15,7 @@
     "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "file-loader": "^6.2.0",
-    "gatsby": "^4.15.1",
+    "gatsby": "^4.15.2",
     "gatsby-image": "^3.11.0",
     "gatsby-link": "^4.15.0",
     "gatsby-plugin-canonical-urls": "^4.15.0",
