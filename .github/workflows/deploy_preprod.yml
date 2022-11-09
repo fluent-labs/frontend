@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Audit URLs using Lighthouse
-      uses: treosh/lighthouse-ci-action@9.3.0
+      uses: treosh/lighthouse-ci-action@9.3.1
       env:
         # Needed because we didn't clone the repo
         LHCI_BUILD_CONTEXT__CURRENT_HASH: ${{ github.sha }}
